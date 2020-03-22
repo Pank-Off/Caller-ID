@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="hello_android">Hello Android!</string>
+    <string name="button">Button</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="my_first_list">My First List</string>
+    <string name="todo">TODO</string>
+    <string name="inputNumber">Введите номер</string>
+    <string name="Call">Позвонить</string>
+</resources>
