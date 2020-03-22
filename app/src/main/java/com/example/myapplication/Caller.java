@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThirdActivity extends AppCompatActivity {
+public class Caller extends AppCompatActivity {
 
 
     List<PhoneBook> contacts = new ArrayList<>();
@@ -21,7 +21,7 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.activity_caller);
 
         initData();
         ListView listView = findViewById(R.id.contacts_list);

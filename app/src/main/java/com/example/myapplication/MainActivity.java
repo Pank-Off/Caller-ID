@@ -2,59 +2,79 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     final static String EXTRA_INT = "Extra Int";
 
-    private TextView text;
+    private Button callerBtn;
+    private Button verifyBtn;
+    private Button spamBtn;
+    private Button settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        text = findViewById(R.id.text1);
-        if (savedInstanceState != null)
-            text.setText(savedInstanceState.getString(EXTRA_INT));
-        else
-            text.setText("1");
-        Button button = findViewById(R.id.btn);
-        button.setOnClickListener(v -> {
-            int currentNumber = getCurrentNumber(text);
-            currentNumber++;
-            text.setText(currentNumber + "");
+
+        initViews();
+        setOnCallerBtnClickListener();
+        setOnVerifyBtnClickListener();
+        setOnSpamBtnClickListener();
+        setOnSettingsBtnClickListener();
+
+    }
+
+
+
+    private void initViews() {
+        callerBtn = findViewById(R.id.callerBtn);
+        verifyBtn = findViewById(R.id.verifyBtn);
+        spamBtn = findViewById(R.id.spamBtn);
+        settingsBtn = findViewById(R.id.settingsBtn);
+    }
+
+
+
+
+
+    private void setOnCallerBtnClickListener() {
+        callerBtn.setOnClickListener(v->
+        {
+            Intent intent = new Intent(this, Caller.class);
+            startActivity(intent);
         });
 
-        Button next = findViewById(R.id.btnNext);
-        Context c = getApplicationContext();
-        next.setOnClickListener(v -> {
-            int i = getCurrentNumber(text);
-            Intent intent = new Intent(c, SecondActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            intent.putExtra(EXTRA_INT, i);
+    }
+    private void setOnVerifyBtnClickListener() {
+        verifyBtn.setOnClickListener(v->
+        {
+            Intent intent = new Intent(this, Verify.class);
             startActivity(intent);
         });
     }
 
+    private void setOnSpamBtnClickListener() {
+        spamBtn.setOnClickListener(v->
+        {
+            Intent intent = new Intent(this, Spam.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setOnSettingsBtnClickListener() {
+        settingsBtn.setOnClickListener(v->
+        {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        });
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString(EXTRA_INT, text.getText().toString());
         super.onSaveInstanceState(outState);
-    }
-
-    int getCurrentNumber(TextView t) {
-        return Integer.parseInt((String) t.getText());
     }
 }
