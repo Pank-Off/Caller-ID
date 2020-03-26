@@ -1,19 +1,24 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     final static String EXTRA_INT = "Extra Int";
 
-    private Button callerBtn;
-    private Button verifyBtn;
-    private Button spamBtn;
-    private Button settingsBtn;
+    private ImageView callerBtn;
+    private ImageView verifyBtn;
+    private ImageView spamBtn;
+    private ImageView settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void initViews() {
         callerBtn = findViewById(R.id.callerBtn);
         verifyBtn = findViewById(R.id.verifyBtn);
@@ -38,38 +42,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void setOnCallerBtnClickListener() {
-        callerBtn.setOnClickListener(v->
+        callerBtn.setOnClickListener(v ->
         {
-            Intent intent = new Intent(this, Caller.class);
-            startActivity(intent);
+            CallerFragment callerFragment = new CallerFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, callerFragment);
+            fragmentTransaction.commit();
         });
 
     }
+
     private void setOnVerifyBtnClickListener() {
-        verifyBtn.setOnClickListener(v->
+        verifyBtn.setOnClickListener(v ->
         {
-            Intent intent = new Intent(this, Verify.class);
-            startActivity(intent);
+            VerifyFragment verifyFragment = new VerifyFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, verifyFragment);
+            fragmentTransaction.commit();
         });
     }
 
     private void setOnSpamBtnClickListener() {
-        spamBtn.setOnClickListener(v->
+        spamBtn.setOnClickListener(v ->
         {
-            Intent intent = new Intent(this, Spam.class);
-            startActivity(intent);
+            SpamFragment spamFragment = new SpamFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, spamFragment);
+            fragmentTransaction.commit();
         });
     }
 
     private void setOnSettingsBtnClickListener() {
-        settingsBtn.setOnClickListener(v->
+        settingsBtn.setOnClickListener(v ->
         {
-            Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
+            SettingsFragment settingsFragment = new SettingsFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, settingsFragment);
+            fragmentTransaction.commit();
         });
     }
 

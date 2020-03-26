@@ -3,58 +3,55 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Caller extends AppCompatActivity {
-
+public class CallerFragment extends Fragment {
 
     List<PhoneBook> contacts = new ArrayList<>();
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caller);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_caller,container,false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         initData();
-        ListView listView = findViewById(R.id.contacts_list);
-        PhoneAdapter adapter = new PhoneAdapter(this, R.layout.item_third_activity, contacts);
+        ListView listView = view.findViewById(R.id.contacts_list);
+        PhoneAdapter adapter = new PhoneAdapter(getContext(), R.layout.item_third_activity, contacts);
         listView.setAdapter(adapter);
         AdapterView.OnItemClickListener itemListener = (parent, v, position, id) -> {
 
             // получаем выбранный пункт
             PhoneBook selectedContact = (PhoneBook) parent.getItemAtPosition(position);
-            Toast.makeText(getApplicationContext(), "Был выбран пункт " + selectedContact.getName(),
+            Toast.makeText(getContext(), "Был выбран пункт " + selectedContact.getName(),
                     Toast.LENGTH_SHORT).show();
 
             String toCall = "tel:" + selectedContact.getNumber();
-            startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(toCall)));
+
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse(toCall));
+            startActivity(intent);
         };
         listView.setOnItemClickListener(itemListener);
-    }
 
-//    public void call(View v) {
-//        EditText number = findViewById(R.id.number);
-//
-//        String num = number.getText().toString();
-//        try {
-//            Integer.parseInt(num);
-//        } catch (NumberFormatException e) {
-//            TextView textView = findViewById(R.id.text);
-//            textView.setText("Введите корректный номер");
-//        }
-//
-//        String toCall = "tel:" + num;
-//
-//        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(toCall)));
-//    }
+
+    }
 
     private void initData() {
         contacts.add(new PhoneBook(R.drawable.phone, "Мама", "+79263391837"));
