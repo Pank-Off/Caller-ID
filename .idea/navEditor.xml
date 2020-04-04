@@ -8,24 +8,24 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="navigation_check">
+                  <entry key="navigation_call_log">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="y" value="368" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="navigation_home">
+                  <entry key="navigation_check_number">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
+                            <option name="x" value="256" />
                             <option name="y" value="12" />
                           </Point>
                         </option>
@@ -44,12 +44,12 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="navigation_spam">
+                  <entry key="navigation_spam_protection">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
+                            <option name="x" value="12" />
                             <option name="y" value="12" />
                           </Point>
                         </option>

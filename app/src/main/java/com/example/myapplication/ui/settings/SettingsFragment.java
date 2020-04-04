@@ -21,23 +21,34 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
+    Button bt;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel =
                 ViewModelProviders.of(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_call_log, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
+        View root = inflater.inflate(R.layout.fragment_settings_tab, container, false);
+        /*final TextView textView = root.findViewById(R.id.text_notifications);
         settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bt = view.findViewById(R.id.shareButton);
+        bt.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String shareBody = "Hi! I'm using Caller ID!";
+            String shareSub = "Share sub";
+            intent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+            intent.putExtra(Intent.EXTRA_TEXT,shareBody);
+            startActivity(Intent.createChooser(intent, "Share using"));
+        });
     }
 }

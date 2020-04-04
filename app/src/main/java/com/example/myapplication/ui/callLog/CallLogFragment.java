@@ -26,13 +26,13 @@ public class CallLogFragment extends Fragment {
         callLogViewModel =
                 ViewModelProviders.of(this).get(CallLogViewModel.class);
         View root = inflater.inflate(R.layout.fragment_call_log, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
+        /*final TextView textView = root.findViewById(R.id.text_notifications);
         callLogViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
     }
 
