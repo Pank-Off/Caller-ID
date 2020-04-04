@@ -39,11 +39,5 @@ public class CallLogFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button addBtn = view.findViewById(R.id.addBtn);
-
-        addBtn.setOnClickListener(v->{
-            Intent intent = new Intent(getContext(), New_Spamer.class);
-            startActivity(intent);
-        });
     }
 }
