@@ -1,83 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:paddingTop="?attr/actionBarSize">
 
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/colorPrimaryDark"/>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
-<!--        <Button-->
-<!--            android:id="@+id/callerBtn"-->
-<!--            style="@style/Theme.AppCompat.Light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Caller" />-->
-        <ImageView
-            android:id="@+id/callerBtn"
-            android:layout_width="0sp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:src="@drawable/calls"/>
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
-<!--        <Button-->
-<!--            android:id="@+id/verifyBtn"-->
-<!--            style="@style/Theme.AppCompat.Light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Verify" />-->
-        <ImageView
-            android:id="@+id/verifyBtn"
-            android:layout_width="0sp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:src="@drawable/question"/>
-
-<!--        <Button-->
-<!--            android:id="@+id/spamBtn"-->
-<!--            style="@style/Theme.AppCompat.Light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Spam" />-->
-        <ImageView
-            android:id="@+id/spamBtn"
-            android:layout_width="0sp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bancircle"/>
-
-<!--        <Button-->
-<!--            android:id="@+id/settingsBtn"-->
-<!--            style="@style/Theme.AppCompat.Light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Settings" />-->
-        <ImageView
-            android:id="@+id/settingsBtn"
-            android:layout_width="0sp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:src="@drawable/settings"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

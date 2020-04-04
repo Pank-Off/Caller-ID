@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_spam_protection">
+
+    <fragment
+        android:id="@+id/navigation_spam_protection"
+        android:name="com.example.myapplication.ui.spamProtection.SpamProtectionFragment"
+        android:label="@string/title_spam_protection"
+        tools:layout="@layout/fragment_spam_protection" />
+
+    <fragment
+        android:id="@+id/navigation_check_number"
+        android:name="com.example.myapplication.ui.checkNumber.CheckNumberFragment"
+        android:label="@string/title_check_number"
+        tools:layout="@layout/fragment_check_number" />
+
+    <fragment
+        android:id="@+id/navigation_call_log"
+        android:name="com.example.myapplication.ui.callLog.CallLogFragment"
+        android:label="@string/title_call_log"
+        tools:layout="@layout/fragment_call_log" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.myapplication.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings_tab" />
+</navigation>

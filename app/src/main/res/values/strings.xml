@@ -14,4 +14,9 @@
     <string name="notification">Notification</string>
     <string name="help">Help</string>
     <string name="about_us">About Us</string>
+    <string name="title_activity_main">Main2Activity</string>
+    <string name="title_spam_protection">Spam protection</string>
+    <string name="title_check_number">Check number</string>
+    <string name="title_call_log">Call log</string>
+    <string name="title_settings">Settings</string>
 </resources>
