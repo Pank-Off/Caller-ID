@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.spam;
+package com.example.myapplication.ui.callLog;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,17 +17,17 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.myapplication.New_Spamer;
 import com.example.myapplication.R;
 
-public class SpamFragment extends Fragment {
+public class CallLogFragment extends Fragment {
 
-    private SpamViewModel spamViewModel;
+    private CallLogViewModel callLogViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        spamViewModel =
-                ViewModelProviders.of(this).get(SpamViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        callLogViewModel =
+                ViewModelProviders.of(this).get(CallLogViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_call_log, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
-        spamViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        callLogViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -22,7 +22,7 @@ public class CheckNumberFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         checkNumberViewModel =
                 ViewModelProviders.of(this).get(CheckNumberViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_spam_protection, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         checkNumberViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

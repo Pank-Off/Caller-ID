@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_spam_protection">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_spam_protection"
+        android:name="com.example.myapplication.ui.spamProtection.SpamProtectionFragment"
+        android:label="@string/title_spam_protection"
+        tools:layout="@layout/fragment_spam_protection" />
 
     <fragment
-        android:id="@+id/navigation_check"
+        android:id="@+id/navigation_check_number"
         android:name="com.example.myapplication.ui.checkNumber.CheckNumberFragment"
-        android:label="@string/title_check"
+        android:label="@string/title_check_number"
         tools:layout="@layout/fragment_check_number" />
 
     <fragment
-        android:id="@+id/navigation_spam"
-        android:name="com.example.myapplication.ui.spam.SpamFragment"
-        android:label="@string/title_spam"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_call_log"
+        android:name="com.example.myapplication.ui.callLog.CallLogFragment"
+        android:label="@string/title_call_log"
+        tools:layout="@layout/fragment_call_log" />
 
     <fragment
         android:id="@+id/navigation_settings"
