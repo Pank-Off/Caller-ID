@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/calls"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_check"
+        android:icon="@drawable/question"
+        android:title="@string/title_check" />
+
+    <item
+        android:id="@+id/navigation_spam"
+        android:icon="@drawable/bancircle"
+        android:title="@string/title_spam" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/title_spam" />
+
+</menu>
