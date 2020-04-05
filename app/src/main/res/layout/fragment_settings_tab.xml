@@ -6,54 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:text="Share it"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50sp"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:text="@string/notification"
-                android:textAlignment="textStart"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:text="@string/help"
-                android:textAlignment="textStart"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:text="@string/about_us"
-                android:textAlignment="textStart"
-                android:textSize="16sp"
-                tools:ignore="RtlSymmetry" />
-
-
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="139dp"
+        android:layout_marginLeft="139dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="140dp"
+        android:text="Share about Caller ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
