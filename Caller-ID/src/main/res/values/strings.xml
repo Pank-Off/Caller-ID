@@ -24,4 +24,5 @@
     <string name="number">Number</string>
     <string name="comment">Comment</string>
     <string name="icon">Icon</string>
+    <string name="allow">Allow</string>
 </resources>
