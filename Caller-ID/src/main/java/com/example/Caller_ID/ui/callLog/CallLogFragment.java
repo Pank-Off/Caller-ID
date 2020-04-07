@@ -1,20 +1,19 @@
 package com.example.Caller_ID.ui.callLog;
 
 import android.Manifest;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,9 +34,13 @@ public class CallLogFragment extends Fragment {
 
     //private CallLogViewModel callLogViewModel;
     private RecyclerView contactsList;
+    private TextView oops;
+    private ImageView sad_emotion;
+    private Button allowBtn;
     private Context context;
-    // Request code for READ_CALL_LOG. It can be any number > 0.
+    private List<PhoneBook> contacts;
 
+    // Request code for READ_CALL_LOG. It can be any number > 0.
     private static final int PERMISSIONS_REQUEST_READ_CALL_LOG = 100;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,9 +63,18 @@ public class CallLogFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
-        contactsList = view.findViewById(R.id.contacts_list);
+        initViews(view);
+        setOnClickAllowBtnListener();
         // Read and show the contacts
         showContacts();
+    }
+
+
+    private void initViews(View view) {
+        contactsList = view.findViewById(R.id.contacts_list);
+        oops = view.findViewById(R.id.notAllowPermission);
+        sad_emotion = view.findViewById(R.id.sad_emotion);
+        allowBtn = view.findViewById(R.id.allowBtn);
     }
 
     /**
@@ -71,11 +83,10 @@ public class CallLogFragment extends Fragment {
     private void showContacts() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context.checkSelfPermission(Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_CALL_LOG}, PERMISSIONS_REQUEST_READ_CALL_LOG);
-            //requestPermissions(new String[]{Manifest.permission.READ_CALL_LOG}, PERMISSIONS_REQUEST_READ_CALL_LOG);
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
         } else {
             // Android version is lesser than 6.0 or the permission is already granted.
-            List<PhoneBook> contacts = getContactNames();
+            contacts = getContactNames();
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
             contactsList.setLayoutManager(linearLayoutManager);
@@ -103,9 +114,14 @@ public class CallLogFragment extends Fragment {
         if (requestCode == PERMISSIONS_REQUEST_READ_CALL_LOG) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission is granted
+                allowBtn.setVisibility(View.INVISIBLE);
+                sad_emotion.setVisibility(View.INVISIBLE);
+                oops.setVisibility(View.INVISIBLE);
                 showContacts();
             } else {
-                Toast.makeText(context, "Until you grant the permission, we cannot display the names", Toast.LENGTH_SHORT).show();
+                oops.setText("Oops...You did not allow CallerID to access your phone call logs(((\nPlease do it!");
+                sad_emotion.setImageResource(R.drawable.sad_emotion);
+                allowBtn.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -121,12 +137,24 @@ public class CallLogFragment extends Fragment {
         List<PhoneBook> phoneBooks = new ArrayList<>();
         CallsProvider callsProvider = new CallsProvider(context);
         List<Call> number = callsProvider.getCalls().getList();
-        for (int i = 0; i < number.size(); i++) {
+        int number_size = number.size();
+        for (int i = 0; i < number_size; i++) {
             contacts.add(number.get(i).number);
             names.add(number.get(i).name);
             phoneBooks.add(new PhoneBook(names.get(i) == null ? R.drawable.bancircle : R.drawable.phone, names.get(i) == null ? "Unknown Number" : names.get(i), contacts.get(i)));
         }
         return phoneBooks;
+    }
+
+    private void setOnClickAllowBtnListener() {
+        allowBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Uri uri = Uri.fromParts("package", context.getPackageName(), null);
+            intent.setData(uri);
+            startActivity(intent);
+            //showContacts();
+        });
     }
 
 
