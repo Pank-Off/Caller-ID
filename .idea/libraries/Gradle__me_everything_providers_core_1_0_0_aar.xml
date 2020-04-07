@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: me.everything:providers-core:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bde323088d7171ac648386223d752f1e/jetified-providers-core-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bde323088d7171ac648386223d752f1e/jetified-providers-core-1.0.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.everything/providers-core/1.0.0/5640bb127ed187579b7d1b433fa0aee5ad19bded/providers-core-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.everything/providers-core/1.0.0/200f3ad2e0c75c4916f4ebd9c61e5e1eabfd34a6/providers-core-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

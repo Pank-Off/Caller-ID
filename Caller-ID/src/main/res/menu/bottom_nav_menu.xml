@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_call_log"
+
+        android:icon="@drawable/calls"
+        android:title="@string/title_call_log" />
+
+    <item
+        android:id="@+id/navigation_check_number"
+        android:icon="@drawable/question"
+        android:title="@string/title_check_number" />
+
+    <item
+        android:id="@+id/navigation_spam_protection"
+        android:icon="@drawable/bancircle"
+        android:title="@string/title_spam_protection" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/title_settings" />
+
+</menu>
