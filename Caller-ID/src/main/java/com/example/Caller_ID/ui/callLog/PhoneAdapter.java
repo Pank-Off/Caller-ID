@@ -40,9 +40,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
         holder.flagView.setImageResource(contacts.get(position).getIcon());
         holder.nameView.setText(contacts.get(position).getName());
         holder.numberView.setText(contacts.get(position).getNumber());
-        holder.oneItemView.setOnClickListener(v -> {
-            holder.listener.onClick(position);
-        });
+        holder.oneItemView.setOnClickListener(v -> holder.listener.onClick(position));
     }
 
     @Override

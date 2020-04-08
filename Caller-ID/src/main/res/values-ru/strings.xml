@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Call">Позвонить</string>
+    <string name="input_number">Введите номер</string>
+    <string name="add">Добавить</string>
+    <string name="notification">Уведомления</string>
+    <string name="help">Помощь</string>
+    <string name="about_us">О приложении</string>
+    <string name="title_spam_protection">Спам</string>
+    <string name="title_check_number">Проверить номер</string>
+    <string name="title_call_log">Журнал звонков</string>
+    <string name="title_settings">Настройки</string>
+    <string name="share_it">Расскажи о нас!</string>
+    <string name="share_about_caller_id">Рассказать об CallerID</string>
+    <string name="number">Номер</string>
+    <string name="comment">Комментарий</string>
+    <string name="icon">Иконка</string>
+    <string name="allow">Разрешить</string>
+    <string name="number_of_phone">Номер телефона</string>
+    <string name="this_is_spam">Это спам</string>
+    <string name="add_category">Добавить категорию</string>
+</resources>

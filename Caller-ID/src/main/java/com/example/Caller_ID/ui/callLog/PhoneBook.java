@@ -5,8 +5,7 @@ public class PhoneBook {
     private String name;
     private String number;
 
-    PhoneBook(int icon, String name, String number)
-    {
+    PhoneBook(int icon, String name, String number) {
         this.icon = icon;
         this.name = name;
         this.number = number;

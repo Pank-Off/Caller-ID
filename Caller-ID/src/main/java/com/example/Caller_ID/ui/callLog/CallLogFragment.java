@@ -39,6 +39,8 @@ public class CallLogFragment extends Fragment {
     private Button allowBtn;
     private Context context;
     private List<PhoneBook> contacts;
+    final static String EXTRA_NUMBER = "EXTRA_NUMBER";
+    final static String EXTRA_NAME = "EXTRA_NAME";
 
     // Request code for READ_CALL_LOG. It can be any number > 0.
     private static final int PERMISSIONS_REQUEST_READ_CALL_LOG = 100;
@@ -86,7 +88,14 @@ public class CallLogFragment extends Fragment {
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
         } else {
             // Android version is lesser than 6.0 or the permission is already granted.
-            contacts = getContactNames();
+
+            Thread t = new Thread(() -> contacts = getContactNames());
+            t.start();
+            try {
+                t.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
             contactsList.setLayoutManager(linearLayoutManager);
@@ -97,10 +106,9 @@ public class CallLogFragment extends Fragment {
                 Toast.makeText(getContext(), "Был выбран пункт " + selectedContact.getName(),
                         Toast.LENGTH_SHORT).show();
 
-                String toCall = "tel:" + selectedContact.getNumber();
-
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse(toCall));
+                Intent intent = new Intent(getActivity(), Details.class);
+                intent.putExtra(EXTRA_NAME, selectedContact.getName());
+                intent.putExtra(EXTRA_NUMBER, selectedContact.getNumber());
                 startActivity(intent);
             });
 
@@ -134,6 +142,7 @@ public class CallLogFragment extends Fragment {
     private List<PhoneBook> getContactNames() {
         List<String> contacts = new ArrayList<>();
         List<String> names = new ArrayList<>();
+        List<Call.CallType> types = new ArrayList<>();
         List<PhoneBook> phoneBooks = new ArrayList<>();
         CallsProvider callsProvider = new CallsProvider(context);
         List<Call> number = callsProvider.getCalls().getList();
@@ -141,9 +150,19 @@ public class CallLogFragment extends Fragment {
         for (int i = 0; i < number_size; i++) {
             contacts.add(number.get(i).number);
             names.add(number.get(i).name);
-            phoneBooks.add(new PhoneBook(names.get(i) == null ? R.drawable.bancircle : R.drawable.phone, names.get(i) == null ? "Unknown Number" : names.get(i), contacts.get(i)));
+            types.add(number.get(i).type);
+            phoneBooks.add(new PhoneBook((determineType(types.get(i))), names.get(i) == null ? "Unknown Number" : names.get(i), contacts.get(i)));
         }
         return phoneBooks;
+    }
+
+    private int determineType(Call.CallType type) {
+        if (type == Call.CallType.INCOMING) {
+            return R.drawable.incomming;
+        } else if (type == Call.CallType.OUTGOING) {
+            return R.drawable.outgoing;
+        }
+        return R.drawable.missing;
     }
 
     private void setOnClickAllowBtnListener() {
