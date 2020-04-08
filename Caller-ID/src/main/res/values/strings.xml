@@ -1,21 +1,11 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="hello_android">Hello Android!</string>
-    <string name="button">Button</string>
-    <string name="back">Back</string>
-    <string name="next">Next</string>
-    <string name="my_first_list">My First List</string>
-    <string name="todo">TODO</string>
-    <string name="inputNumber">Введите номер</string>
-    <string name="Call">Позвонить</string>
+    <string name="Call">Call</string>
     <string name="input_number">Input number</string>
-    <string name="check_number">Check number</string>
     <string name="add">Add</string>
     <string name="notification">Notification</string>
     <string name="help">Help</string>
     <string name="about_us">About Us</string>
-    <string name="title_activity_main">Main2Activity</string>
-    <string name="title_spam_protection">Spam protection</string>
+    <string name="title_spam_protection">Spam</string>
     <string name="title_check_number">Check number</string>
     <string name="title_call_log">Call log</string>
     <string name="title_settings">Settings</string>

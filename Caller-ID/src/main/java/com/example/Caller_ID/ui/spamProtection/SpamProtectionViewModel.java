@@ -13,7 +13,7 @@ public class SpamProtectionViewModel extends ViewModel {
         mText.setValue("This is SpamProtection fragment");
     }
 
-    public LiveData<String> getText() {
+    LiveData<String> getText() {
         return mText;
     }
 }

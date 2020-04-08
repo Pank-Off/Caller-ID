@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.Caller_ID.ui.spamProtection.NewSpamer">
+    tools:context="com.example.Caller_ID.ui.spamProtection.AddNumberActivity">
 
 
     <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/numberOfPhoneLay"
+        android:id="@+id/numberOfPhoneLay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

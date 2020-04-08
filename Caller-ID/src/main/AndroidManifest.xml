@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".ui.spamProtection.NewSpamer" />
+        <activity android:name=".ui.spamProtection.AddNumberActivity" />
         <activity
             android:name=".MainActivity"
             android:label="CallerID">

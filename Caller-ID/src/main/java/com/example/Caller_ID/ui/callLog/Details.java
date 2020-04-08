@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Caller_ID.R;
-import com.example.Caller_ID.ui.spamProtection.NewSpamer;
+import com.example.Caller_ID.ui.spamProtection.AddNumberActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Objects;
@@ -21,7 +21,7 @@ import static com.example.Caller_ID.ui.callLog.CallLogFragment.EXTRA_NUMBER;
 
 
 public class Details extends AppCompatActivity {
-    TextView whoView;
+    TextView nameView;
     TextView numberView;
     ImageView call;
     MaterialButton thisIsSpamBtn;
@@ -38,15 +38,15 @@ public class Details extends AppCompatActivity {
     }
 
     private void setOnSpamBtnClickListener() {
-        thisIsSpamBtn.setOnClickListener(v->{
-            Intent intent = new Intent(this, NewSpamer.class);
+        thisIsSpamBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddNumberActivity.class);
             intent.putExtra(EXTRA, numberView.getText());
             startActivity(intent);
         });
     }
 
     private void setOnImageClickListener() {
-        call.setOnClickListener(v->{
+        call.setOnClickListener(v -> {
             String toCall = "tel:" + numberView.getText();
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse(toCall));
@@ -57,13 +57,13 @@ public class Details extends AppCompatActivity {
     private void setText() {
         String name = Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_NAME);
         String number = Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_NUMBER);
-        whoView.setText(name);
-        whoView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        nameView.setText(name);
+        nameView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         numberView.setText(number);
     }
 
     private void initViews() {
-        whoView = findViewById(R.id.name);
+        nameView = findViewById(R.id.name);
         numberView = findViewById(R.id.number);
         call = findViewById(R.id.call);
         thisIsSpamBtn = findViewById(R.id.thisIsSpamBtn);

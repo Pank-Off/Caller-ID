@@ -37,6 +37,6 @@ public class CheckNumberFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         addBtn = view.findViewById(R.id.addBtn);
-        addBtn.setText("Check");
+        addBtn.setText(R.string.title_check_number);
     }
 }
