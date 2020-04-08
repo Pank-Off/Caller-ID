@@ -9,13 +9,13 @@
         android:id="@+id/navigation_call_log"
         android:name="com.example.Caller_ID.ui.callLog.CallLogFragment"
         android:label="@string/title_call_log"
-        tools:layout="@layout/fragment_call_log" />
+        tools:layout="@layout/fragment_caller" />
 
     <fragment
         android:id="@+id/navigation_check_number"
         android:name="com.example.Caller_ID.ui.checkNumber.CheckNumberFragment"
         android:label="@string/title_check_number"
-        tools:layout="@layout/fragment_check_number" />
+        tools:layout="@layout/fragment_check_and_newspamer" />
 
 
     <fragment

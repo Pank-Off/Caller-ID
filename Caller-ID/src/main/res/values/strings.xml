@@ -25,4 +25,7 @@
     <string name="comment">Comment</string>
     <string name="icon">Icon</string>
     <string name="allow">Allow</string>
+    <string name="number_of_phone">Number of phone</string>
+    <string name="this_is_spam">This is Spam</string>
+    <string name="add_category">Add Category</string>
 </resources>
