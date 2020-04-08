@@ -10,33 +10,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/Details.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/drawable/incomming.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/drawable/missing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/drawable/outgoing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_check_and_newspamer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+    <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/New_Spamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/NewSpamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/SpamFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/VerifyFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_newspamer.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_call_log.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_check_number.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_verify.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +20,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_Nexus_API_21" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="4891aab7" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -327,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586293980187</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Кнопки, поток, активити, подробная инфа, спамер">
+      <created>1586360379886</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586360379886</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,6 +331,7 @@
     <MESSAGE value="SomeChanges" />
     <MESSAGE value="Сделал CallLog. По нажатию на номер -&gt; на экран вызова номера." />
     <MESSAGE value="Добавил некоторую обработку ситуации для разрешения доступа к CallLog'у. И если доступа нет, то вывожу фрагмент с текстом кнопкой и иконкой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил некоторую обработку ситуации для разрешения доступа к CallLog'у. И если доступа нет, то вывожу фрагмент с текстом кнопкой и иконкой" />
+    <MESSAGE value="Кнопки, поток, активити, подробная инфа, спамер" />
+    <option name="LAST_COMMIT_MESSAGE" value="Кнопки, поток, активити, подробная инфа, спамер" />
   </component>
 </project>
