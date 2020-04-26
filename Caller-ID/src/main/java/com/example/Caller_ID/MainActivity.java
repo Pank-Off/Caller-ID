@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         //Boolean isSpam=false;
         //mDatabaseHelper.addRecord(testPhone, isSpam);
         download();
-
     }
 
     public void download() {

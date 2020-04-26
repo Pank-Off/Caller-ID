@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1055976432310",
+    "firebase_url": "https://callerid-906db.firebaseio.com",
+    "project_id": "callerid-906db",
+    "storage_bucket": "callerid-906db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055976432310:android:dc75eb68bf117a0fe43c17",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055976432310-ne65bpe5igptiedsht156il487hhnp7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6iLcv5hxfkwdm5N74ESsBAuycGHys8Sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055976432310-ne65bpe5igptiedsht156il487hhnp7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
