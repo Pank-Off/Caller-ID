@@ -21,9 +21,8 @@ import android.content.Context;
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper mDatabaseHelper;
-    FirebaseStorage firebaseStorage;
-    StorageReference storageReference;
-    StorageReference ref;
+
+    FireBaseWorker fireBaseWorker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,47 +41,10 @@ public class MainActivity extends AppCompatActivity {
         //String testPhone="+7-495-999-99-99";
         //Boolean isSpam=false;
         //mDatabaseHelper.addRecord(testPhone, isSpam);
-        download();
+        fireBaseWorker = new FireBaseWorker(getApplicationContext());
+
+        fireBaseWorker.download();
     }
 
-    public void download() {
-        storageReference = FirebaseStorage.getInstance().getReference();
-        ref = storageReference.child("phoneTable");
-
-        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                String url = uri.toString();
-                downloadFiles(MainActivity.this,
-                        "phoneTable",
-                        "",
-//                        "/data/data/com.example.myapplication/databases/",  // Здесь студия предлагает другой вариант
-                        getApplicationContext().getFilesDir().getPath(),
-                         url);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
-
-    public void downloadFiles(Context context,
-                              String fileName,
-                              String fileExtension,
-                              String destinationDirectory,
-                              String url) {
-        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        Uri uri = Uri.parse(url);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName+fileExtension);
-
-        if (downloadManager != null) {
-            downloadManager.enqueue(request);
-        }
-    }
 
 }

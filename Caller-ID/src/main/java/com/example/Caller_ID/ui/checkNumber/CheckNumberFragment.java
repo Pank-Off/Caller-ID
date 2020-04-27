@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -23,6 +24,7 @@ public class CheckNumberFragment extends Fragment {
     private MaterialButton addBtn;
     private TextInputEditText numberOfPhoneEditText;
     private TextInputEditText commentEditText;
+    private TextInputLayout commentLay;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,11 +51,13 @@ public class CheckNumberFragment extends Fragment {
 
         addBtn.setText(R.string.title_check_number);
         addBtn.setOnClickListener(v-> checkNumberViewModel.checkValid(numberOfPhoneEditText));
+        commentLay.setVisibility(View.INVISIBLE);
     }
 
     private void initViews(View view) {
         addBtn = view.findViewById(R.id.addBtn);
         numberOfPhoneEditText = view.findViewById(R.id.numberOfPhone);
         commentEditText = view.findViewById(R.id.comment);
+        commentLay = view.findViewById(R.id.commentLay);
     }
 }

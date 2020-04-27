@@ -13,21 +13,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="MissingFiles">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+    <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/FireBaseWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_settings_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_settings_tab.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/item_third_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/item_third_activity.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Weather_App" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NavigationDrawerActivity" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -392,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587931812633</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Architecture">
+      <created>1587996358818</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587996358818</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -416,6 +415,7 @@
     <MESSAGE value="Кнопки, поток, активити, подробная инфа, спамер" />
     <MESSAGE value="MissingFiles" />
     <MESSAGE value="FireBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="FireBase" />
+    <MESSAGE value="Architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Architecture" />
   </component>
 </project>
