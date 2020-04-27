@@ -18,4 +18,5 @@
     <string name="number_of_phone">Number of phone</string>
     <string name="this_is_spam">This is Spam</string>
     <string name="add_category">Add Category</string>
+    <string name="examplebtn">ExampleBtn</string>
 </resources>

@@ -10,36 +10,40 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Caller_ID.R;
+
+import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
-    Button bt;
+    private Button shareBtn;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        settingsViewModel =
-                ViewModelProviders.of(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_settings_tab, container, false);
-        /*final TextView textView = root.findViewById(R.id.text_notifications);
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-        return root;
+
+        return inflater.inflate(R.layout.fragment_settings_tab, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bt = view.findViewById(R.id.shareButton);
-        bt.setOnClickListener(v -> {
+        settingsViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(SettingsViewModel.class);
+        settingsViewModel.getText().observe(getViewLifecycleOwner(),new Observer<String>(){
+
+            @Override
+            public void onChanged(String s) {
+
+            }
+        });
+
+        shareBtn = view.findViewById(R.id.shareButton);
+        shareBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String shareBody = "Hi! I'm using Caller ID!";
@@ -48,5 +52,6 @@ public class SettingsFragment extends Fragment {
             intent.putExtra(Intent.EXTRA_TEXT, shareBody);
             startActivity(Intent.createChooser(intent, "Share using"));
         });
+
     }
 }
