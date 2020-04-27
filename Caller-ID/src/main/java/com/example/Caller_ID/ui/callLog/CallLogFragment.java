@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,11 +36,13 @@ public class CallLogFragment extends Fragment {
 
     private CallLogViewModel callLogViewModel;
     private RecyclerView contactsList;
+     private DividerItemDecoration mDividerItemDecoration;
     private TextView oops;
     private ImageView sad_emotion;
     private Button allowBtn;
     private Context context;
     private List<PhoneBook> contacts;
+
     final static String EXTRA_NUMBER = "EXTRA_NUMBER";
     final static String EXTRA_NAME = "EXTRA_NAME";
 
@@ -100,6 +103,9 @@ public class CallLogFragment extends Fragment {
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
             contactsList.setLayoutManager(linearLayoutManager);
+            mDividerItemDecoration = new DividerItemDecoration(contactsList.getContext(),
+                    DividerItemDecoration.VERTICAL);
+            contactsList.addItemDecoration(mDividerItemDecoration);
 
             PhoneAdapter adapter = new PhoneAdapter(contacts, positions -> {
                 // получаем выбранный пункт
