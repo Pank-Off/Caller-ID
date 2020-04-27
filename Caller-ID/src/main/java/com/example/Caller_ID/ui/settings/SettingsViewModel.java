@@ -13,7 +13,8 @@ public class SettingsViewModel extends ViewModel {
         mText.setValue("This is settings fragment");
     }
 
-    public LiveData<String> getText() {
+    LiveData<String> getText() {
         return mText;
     }
+
 }

@@ -4,10 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,13 +26,14 @@ import com.example.Caller_ID.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import me.everything.providers.android.calllog.Call;
 import me.everything.providers.android.calllog.CallsProvider;
 
 public class CallLogFragment extends Fragment {
 
-    //private CallLogViewModel callLogViewModel;
+    private CallLogViewModel callLogViewModel;
     private RecyclerView contactsList;
     private TextView oops;
     private ImageView sad_emotion;
@@ -47,30 +48,30 @@ public class CallLogFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        callLogViewModel =
-//                ViewModelProviders.of(this).get(CallLogViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_caller, container, false);
-        /*final TextView textView = root.findViewById(R.id.text_notifications);
-        callLogViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-        return root;
+        return inflater.inflate(R.layout.fragment_caller, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        callLogViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(CallLogViewModel.class);
+        callLogViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+
+            }
+        });
 
         context = getContext();
         initViews(view);
-        setOnClickAllowBtnListener();
+        allowBtn.setOnClickListener(v->{
+            Intent intent = callLogViewModel.setOnClickAllowBtnListener(context);
+            startActivity(intent);
+        });
+
         // Read and show the contacts
         showContacts();
     }
-
 
     private void initViews(View view) {
         contactsList = view.findViewById(R.id.contacts_list);
@@ -111,7 +112,6 @@ public class CallLogFragment extends Fragment {
                 intent.putExtra(EXTRA_NUMBER, selectedContact.getNumber());
                 startActivity(intent);
             });
-
             contactsList.setAdapter(adapter);
         }
     }
@@ -164,17 +164,5 @@ public class CallLogFragment extends Fragment {
         }
         return R.drawable.missing;
     }
-
-    private void setOnClickAllowBtnListener() {
-        allowBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Uri uri = Uri.fromParts("package", context.getPackageName(), null);
-            intent.setData(uri);
-            startActivity(intent);
-            //showContacts();
-        });
-    }
-
 
 }

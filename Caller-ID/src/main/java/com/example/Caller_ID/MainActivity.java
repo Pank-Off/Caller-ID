@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void download() {
-        storageReference = firebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
         ref = storageReference.child("phoneTable");
 
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 downloadFiles(MainActivity.this,
                         "phoneTable",
                         "",
-                        "/data/data/com.example.myapplication/databases/",
+//                        "/data/data/com.example.myapplication/databases/",  // Здесь студия предлагает другой вариант
+                        getApplicationContext().getFilesDir().getPath(),
                          url);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -79,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName+fileExtension);
 
-        downloadManager.enqueue(request);
+        if (downloadManager != null) {
+            downloadManager.enqueue(request);
+        }
     }
 
 }
