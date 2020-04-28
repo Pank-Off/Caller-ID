@@ -16,8 +16,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Objects;
-
 public class CheckNumberFragment extends Fragment {
 
     private CheckNumberViewModel checkNumberViewModel;
@@ -37,20 +35,19 @@ public class CheckNumberFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        checkNumberViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(CheckNumberViewModel.class);
-       checkNumberViewModel.getValid().observe(getViewLifecycleOwner(), bool -> {
-           String toast;
-           if(bool){
-               toast = "Valid input";
-           }
-           else {
-               toast = "Invalid input";
-           }
-           Toast.makeText(getContext(),toast,Toast.LENGTH_LONG).show();
-       });
+        checkNumberViewModel = new ViewModelProvider(requireActivity()).get(CheckNumberViewModel.class);
+        checkNumberViewModel.getValid().observe(getViewLifecycleOwner(), bool -> {
+            String toast;
+            if (bool) {
+                toast = "Valid input";
+            } else {
+                toast = "Invalid input";
+            }
+            Toast.makeText(getContext(), toast, Toast.LENGTH_LONG).show();
+        });
 
         addBtn.setText(R.string.title_check_number);
-        addBtn.setOnClickListener(v-> checkNumberViewModel.checkValid(numberOfPhoneEditText));
+        addBtn.setOnClickListener(v -> checkNumberViewModel.checkValid(numberOfPhoneEditText));
         commentLay.setVisibility(View.INVISIBLE);
     }
 

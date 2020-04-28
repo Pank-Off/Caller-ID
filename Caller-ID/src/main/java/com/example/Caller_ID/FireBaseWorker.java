@@ -17,7 +17,7 @@ public class FireBaseWorker {
     private StorageReference ref;
     private Context context;
 
-    FireBaseWorker(Context context){
+    FireBaseWorker(Context context) {
         this.context = context;
     }
 
@@ -53,7 +53,7 @@ public class FireBaseWorker {
         DownloadManager.Request request = new DownloadManager.Request(uri);
 
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName+fileExtension);
+        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName + fileExtension);
 
         if (downloadManager != null) {
             downloadManager.enqueue(request);

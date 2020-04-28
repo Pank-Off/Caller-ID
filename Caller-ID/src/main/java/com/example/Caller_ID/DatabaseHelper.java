@@ -2,8 +2,12 @@ package com.example.Caller_ID;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -33,6 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addRecord(String phoneNumber, Boolean isSpam) {
+        //Сделать проверку на дубликаты!
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, phoneNumber);
@@ -46,5 +51,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         return result != -1;
+    }
+
+    public ArrayList<String> getDataFromDB() {
+        ArrayList<String> data= new ArrayList<>();
+        // делаем запрос всех данных из таблицы mytable, получаем Cursor
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
+
+        // ставим позицию курсора на первую строку выборки
+        // если в выборке нет строк, вернется false
+        if (c.moveToFirst()) {
+
+            // определяем номера столбцов по имени в выборке
+            int idColIndex = c.getColumnIndex(COL1);
+            int numberColIndex = c.getColumnIndex(COL2);
+            int spamColIndex = c.getColumnIndex(COL3);
+
+            do {
+                // получаем значения по номерам столбцов и пишем все в лог
+                if(!data.contains(c.getString(numberColIndex))) {
+                    data.add(c.getString(numberColIndex));
+                }
+                // переход на следующую строку
+                // а если следующей нет (текущая - последняя), то false - выходим из цикла
+            } while (c.moveToNext());
+        } else
+            Log.d("DataBase", "0 rows");
+        c.close();
+        return data;
     }
 }

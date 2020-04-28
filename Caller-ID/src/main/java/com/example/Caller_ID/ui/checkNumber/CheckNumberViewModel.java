@@ -25,7 +25,7 @@ public class CheckNumberViewModel extends ViewModel {
     }
 
 
-    void checkValid(TextInputEditText numberOfPhoneTV){
+    void checkValid(TextInputEditText numberOfPhoneTV) {
         String numberOfPhoneValue = Objects.requireNonNull(numberOfPhoneTV.getText()).toString();
         if (correctNumber.matcher(numberOfPhoneValue).matches()) {
             hideError(numberOfPhoneTV);
