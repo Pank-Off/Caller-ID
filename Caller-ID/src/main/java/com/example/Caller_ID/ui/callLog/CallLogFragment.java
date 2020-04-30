@@ -27,7 +27,6 @@ import com.example.Caller_ID.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import me.everything.providers.android.calllog.Call;
 import me.everything.providers.android.calllog.CallsProvider;
@@ -36,7 +35,7 @@ public class CallLogFragment extends Fragment {
 
     private CallLogViewModel callLogViewModel;
     private RecyclerView contactsList;
-     private DividerItemDecoration mDividerItemDecoration;
+    private DividerItemDecoration mDividerItemDecoration;
     private TextView oops;
     private ImageView sad_emotion;
     private Button allowBtn;
@@ -57,7 +56,7 @@ public class CallLogFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        callLogViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(CallLogViewModel.class);
+        callLogViewModel = new ViewModelProvider(requireActivity()).get(CallLogViewModel.class);
         callLogViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -67,7 +66,7 @@ public class CallLogFragment extends Fragment {
 
         context = getContext();
         initViews(view);
-        allowBtn.setOnClickListener(v->{
+        allowBtn.setOnClickListener(v -> {
             Intent intent = callLogViewModel.setOnClickAllowBtnListener(context);
             startActivity(intent);
         });

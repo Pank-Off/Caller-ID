@@ -1,22 +1,14 @@
 package com.example.Caller_ID;
 
-import android.app.DownloadManager;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import android.content.Context;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         //mDatabaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_call_log,
                 R.id.navigation_check_number, R.id.navigation_spam_protection, R.id.navigation_settings)
                 .build();

@@ -7,8 +7,9 @@
         android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+
         <ImageView
             android:id="@+id/phone"
             android:layout_width="70dp"

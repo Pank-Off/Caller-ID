@@ -15,8 +15,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Caller_ID.R;
 
-import java.util.Objects;
-
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
@@ -33,8 +31,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        settingsViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(SettingsViewModel.class);
-        settingsViewModel.getText().observe(getViewLifecycleOwner(),new Observer<String>(){
+        settingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
+        settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 
             @Override
             public void onChanged(String s) {

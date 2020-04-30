@@ -12,13 +12,11 @@
         android:layout_height="match_parent"
         android:focusable="true" />
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_add_black_24dp"
