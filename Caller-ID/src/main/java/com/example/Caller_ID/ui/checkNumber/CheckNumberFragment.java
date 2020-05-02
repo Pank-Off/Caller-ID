@@ -1,28 +1,35 @@
 package com.example.Caller_ID.ui.checkNumber;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+
 public class CheckNumberFragment extends Fragment {
 
+    DatabaseHelper mDatabaseHelper;
     private CheckNumberViewModel checkNumberViewModel;
     private MaterialButton addBtn;
     private TextInputEditText numberOfPhoneEditText;
-    private TextInputEditText commentEditText;
-    private TextInputLayout commentLay;
+    private TextView isSpamTextfield;
+    private Context context;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,14 +54,17 @@ public class CheckNumberFragment extends Fragment {
         });
 
         addBtn.setText(R.string.title_check_number);
-        addBtn.setOnClickListener(v -> checkNumberViewModel.checkValid(numberOfPhoneEditText));
-        commentLay.setVisibility(View.INVISIBLE);
+        addBtn.setOnClickListener(v -> {
+            context = getContext();
+            mDatabaseHelper = new DatabaseHelper(context);
+            String isSpam = mDatabaseHelper.getSingleUserInfo(numberOfPhoneEditText.getText().toString());
+            isSpamTextfield.setText(isSpam);
+        });;
     }
 
     private void initViews(View view) {
         addBtn = view.findViewById(R.id.addBtn);
         numberOfPhoneEditText = view.findViewById(R.id.numberOfPhone);
-        commentEditText = view.findViewById(R.id.comment);
-        commentLay = view.findViewById(R.id.commentLay);
+        isSpamTextfield = view.findViewById(R.id.isSpamTextView);
     }
 }

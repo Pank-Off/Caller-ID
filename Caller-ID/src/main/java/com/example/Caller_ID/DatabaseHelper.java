@@ -53,6 +53,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    public String getSingleUserInfo(String phoneNumber){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 +" = ? ", new String[]{phoneNumber});
+        String result = "";
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int intIsSpam = cursor.getInt(cursor.getColumnIndex(COL3));
+            cursor.close();
+
+            if (intIsSpam == 1) {
+                result = "Is spam";
+            }
+
+            if (intIsSpam == 0) {
+                result = "Not spam";
+            }
+        }
+        else {
+            result = "Not found";
+        }
+
+        database.close();
+
+        return result;
+    }
+
     public ArrayList<String> getDataFromDB() {
         ArrayList<String> data= new ArrayList<>();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
