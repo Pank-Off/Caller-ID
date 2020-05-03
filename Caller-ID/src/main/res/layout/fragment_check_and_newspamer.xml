@@ -27,26 +27,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/commentLay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
-        android:layout_weight="1"
-        android:hint="@string/comment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfPhoneLay">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/comment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:textSize="25sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.button.MaterialButton
 
         android:id="@+id/addBtn"
@@ -54,10 +34,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:text="@string/add_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentLay" />
+        app:layout_constraintTop_toBottomOf="@+id/isSpamTextView" />
+
+    <TextView
+        android:id="@+id/isSpamTextView"
+        android:layout_width="403dp"
+        android:layout_height="40dp"
+        android:text="TextView"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfPhoneLay" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
