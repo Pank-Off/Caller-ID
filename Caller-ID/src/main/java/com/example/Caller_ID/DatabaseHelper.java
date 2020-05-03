@@ -53,9 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public String getSingleUserInfo(String phoneNumber){
+    public String getSingleUserInfo(String phoneNumber) {
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 +" = ? ", new String[]{phoneNumber});
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = ? ", new String[]{phoneNumber});
         String result = "";
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -69,8 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (intIsSpam == 0) {
                 result = "Not spam";
             }
-        }
-        else {
+        } else {
             result = "Not found";
         }
 
@@ -80,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<String> getDataFromDB() {
-        ArrayList<String> data= new ArrayList<>();
+        ArrayList<String> data = new ArrayList<>();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
         SQLiteDatabase db = getWritableDatabase();
         Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
@@ -96,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             do {
                 // получаем значения по номерам столбцов и пишем все в лог
-                if(!data.contains(c.getString(numberColIndex))) {
+                if (!data.contains(c.getString(numberColIndex))) {
                     data.add(c.getString(numberColIndex));
                 }
                 // переход на следующую строку

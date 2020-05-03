@@ -1,13 +1,12 @@
 package com.example.Caller_ID.ui.checkNumber;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +17,8 @@ import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class CheckNumberFragment extends Fragment {
 
@@ -57,9 +55,9 @@ public class CheckNumberFragment extends Fragment {
         addBtn.setOnClickListener(v -> {
             context = getContext();
             mDatabaseHelper = new DatabaseHelper(context);
-            String isSpam = mDatabaseHelper.getSingleUserInfo(numberOfPhoneEditText.getText().toString());
+            String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(numberOfPhoneEditText.getText()).toString());
             isSpamTextfield.setText(isSpam);
-        });;
+        });
     }
 
     private void initViews(View view) {

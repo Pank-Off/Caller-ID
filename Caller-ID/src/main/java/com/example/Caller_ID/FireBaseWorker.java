@@ -11,7 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class FireBaseWorker {
+class FireBaseWorker {
     FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     private StorageReference ref;

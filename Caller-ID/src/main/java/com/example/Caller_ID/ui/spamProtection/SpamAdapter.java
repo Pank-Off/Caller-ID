@@ -38,7 +38,8 @@ public class SpamAdapter extends RecyclerView.Adapter<SpamAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SpamAdapter.ViewHolder holder, int position) {
         holder.flagView.setImageResource(R.drawable.bancircle);
-        holder.nameView.setText("Spamer " + position);
+
+        holder.nameView.setText(R.string.spamer);
         holder.numberView.setText(spamers.get(position));
         holder.oneItemView.setOnClickListener(v -> holder.listener.onClick(position));
     }
