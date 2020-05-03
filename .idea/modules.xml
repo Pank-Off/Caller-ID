@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Caller-ID/1.iml" filepath="$PROJECT_DIR$/Caller-ID/1.iml" group="My Application/Caller-ID" />
+      <module fileurl="file://$PROJECT_DIR$/Caller-ID/AndroidStudioProjects-Caller-ID-Caller-ID.iml" filepath="$PROJECT_DIR$/Caller-ID/AndroidStudioProjects-Caller-ID-Caller-ID.iml" group="My Application/Caller-ID" />
       <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-Caller-ID-My Application.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-Caller-ID-My Application.iml" group="My Application" />
-      <module fileurl="file://$PROJECT_DIR$/Caller-ID/Caller-ID.iml" filepath="$PROJECT_DIR$/Caller-ID/Caller-ID.iml" group="My Application/Caller-ID" />
-      <module fileurl="file://$PROJECT_DIR$/Caller-ID/Caller-ID-Caller-ID.iml" filepath="$PROJECT_DIR$/Caller-ID/Caller-ID-Caller-ID.iml" group="My Application/Caller-ID" />
+      <module fileurl="file://$PROJECT_DIR$/Caller-ID/Caller-ID.iml" filepath="$PROJECT_DIR$/Caller-ID/Caller-ID.iml" group="My Application/app" />
       <module fileurl="file://$PROJECT_DIR$/Caller-ID-My Application.iml" filepath="$PROJECT_DIR$/Caller-ID-My Application.iml" group="My Application" />
       <module fileurl="file://$PROJECT_DIR$/Caller-ID/Caller-ID-app.iml" filepath="$PROJECT_DIR$/Caller-ID/Caller-ID-app.iml" group="My Application/app" />
       <module fileurl="file://$PROJECT_DIR$/My Application.iml" filepath="$PROJECT_DIR$/My Application.iml" group="My Application" />
       <module fileurl="file://$PROJECT_DIR$/Caller-ID/app.iml" filepath="$PROJECT_DIR$/Caller-ID/app.iml" group="My Application/app" />
+      <module fileurl="file://$PROJECT_DIR$/panko-AndroidStudioProjects-Caller-ID-My Application.iml" filepath="$PROJECT_DIR$/panko-AndroidStudioProjects-Caller-ID-My Application.iml" group="My Application" />
     </modules>
   </component>
 </project>
