@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
+import com.example.Caller_ID.ui.callLog.Details;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -75,7 +76,9 @@ public class SpamProtectionFragment extends Fragment {
             String selectedSpamer = spamer.get(positions);
             Toast.makeText(getContext(), "Был выбран пункт " + selectedSpamer,
                     Toast.LENGTH_SHORT).show();
-
+//            Intent intent = new Intent(getActivity(), AddNumberActivity.class);
+//            intent.putExtra(EXTRA, selectedSpamer);
+//            startActivity(intent);
         });
         spamList.setAdapter(adapter);
     }

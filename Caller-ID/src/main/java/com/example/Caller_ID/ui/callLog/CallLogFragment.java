@@ -23,10 +23,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import me.everything.providers.android.calllog.Call;
 import me.everything.providers.android.calllog.CallsProvider;
@@ -41,9 +43,11 @@ public class CallLogFragment extends Fragment {
     private Button allowBtn;
     private Context context;
     private List<PhoneBook> contacts;
+    private DatabaseHelper mDatabaseHelper;
 
     final static String EXTRA_NUMBER = "EXTRA_NUMBER";
     final static String EXTRA_NAME = "EXTRA_NAME";
+    final static String EXTRA_ICON = "EXTRA_ICON";
 
     // Request code for READ_CALL_LOG. It can be any number > 0.
     private static final int PERMISSIONS_REQUEST_READ_CALL_LOG = 100;
@@ -63,7 +67,6 @@ public class CallLogFragment extends Fragment {
 
             }
         });
-
         context = getContext();
         initViews(view);
         allowBtn.setOnClickListener(v -> {
@@ -115,6 +118,7 @@ public class CallLogFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), Details.class);
                 intent.putExtra(EXTRA_NAME, selectedContact.getName());
                 intent.putExtra(EXTRA_NUMBER, selectedContact.getNumber());
+                intent.putExtra(EXTRA_ICON, selectedContact.getIcon());
                 startActivity(intent);
             });
             contactsList.setAdapter(adapter);
@@ -156,12 +160,18 @@ public class CallLogFragment extends Fragment {
             contacts.add(number.get(i).number);
             names.add(number.get(i).name);
             types.add(number.get(i).type);
-            phoneBooks.add(new PhoneBook((determineType(types.get(i))), names.get(i) == null ? "Unknown Number" : names.get(i), contacts.get(i)));
+            phoneBooks.add(new PhoneBook((determineType(types.get(i), contacts.get(i))), names.get(i) == null ? "Unknown Number" : names.get(i), contacts.get(i)));
         }
         return phoneBooks;
     }
 
-    private int determineType(Call.CallType type) {
+    private int determineType(Call.CallType type, String number) {
+
+        mDatabaseHelper = new DatabaseHelper(context);
+        String isSpam = mDatabaseHelper.getSingleUserInfo(number);
+        if (isSpam.equals("Is spam")) {
+            return R.drawable.bancircle;
+        }
         if (type == Call.CallType.INCOMING) {
             return R.drawable.incomming;
         } else if (type == Call.CallType.OUTGOING) {

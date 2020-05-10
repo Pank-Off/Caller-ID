@@ -19,4 +19,5 @@
     <string name="this_is_spam">This is Spam</string>
     <string name="add_category">Add Category</string>
     <string name="spamer">Spamer</string>
+    <string name="this_is_not_spam">This is not Spam</string>
 </resources>

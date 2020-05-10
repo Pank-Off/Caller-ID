@@ -1,21 +1,25 @@
 package com.example.Caller_ID.ui.callLog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 import com.example.Caller_ID.ui.spamProtection.AddNumberActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Objects;
 
+import static com.example.Caller_ID.ui.callLog.CallLogFragment.EXTRA_ICON;
 import static com.example.Caller_ID.ui.callLog.CallLogFragment.EXTRA_NAME;
 import static com.example.Caller_ID.ui.callLog.CallLogFragment.EXTRA_NUMBER;
 
@@ -25,12 +29,16 @@ public class Details extends AppCompatActivity {
     TextView numberView;
     ImageView call;
     MaterialButton thisIsSpamBtn;
+    Context context;
+    DatabaseHelper mDatabaseHelper;
     public final static String EXTRA = "EXTRA";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        context = getApplicationContext();
+        mDatabaseHelper = new DatabaseHelper(context);
         initViews();
         setText();
         setOnImageClickListener();
@@ -38,10 +46,23 @@ public class Details extends AppCompatActivity {
     }
 
     private void setOnSpamBtnClickListener() {
+        if (Objects.requireNonNull(getIntent().getExtras()).getInt(EXTRA_ICON) == R.drawable.bancircle) {
+            thisIsSpamBtn.setText(R.string.this_is_not_spam);
+        } else {
+            thisIsSpamBtn.setText(R.string.this_is_spam);
+        }
+
         thisIsSpamBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AddNumberActivity.class);
-            intent.putExtra(EXTRA, numberView.getText());
-            startActivity(intent);
+            if (thisIsSpamBtn.getText().equals(getResources().getString(R.string.this_is_spam))) {
+                Intent intent = new Intent(this, AddNumberActivity.class);
+                intent.putExtra(EXTRA, numberView.getText());
+                startActivity(intent);
+                thisIsSpamBtn.setText(R.string.this_is_not_spam);
+            } else {
+                Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
+                mDatabaseHelper.removeRecord(numberView.getText().toString());
+                thisIsSpamBtn.setText(R.string.this_is_spam);
+            }
         });
     }
 
@@ -67,5 +88,6 @@ public class Details extends AppCompatActivity {
         numberView = findViewById(R.id.number);
         call = findViewById(R.id.call);
         thisIsSpamBtn = findViewById(R.id.thisIsSpamBtn);
+
     }
 }
