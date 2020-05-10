@@ -37,8 +37,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addRecord(String phoneNumber, Boolean isSpam) {
-        //Сделать проверку на дубликаты!
         SQLiteDatabase db = this.getWritableDatabase();
+        if (checkDuplicate(db, phoneNumber)) {
+            return false;
+        }
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, phoneNumber);
 
@@ -51,6 +53,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         return result != -1;
+    }
+
+    private boolean checkDuplicate(SQLiteDatabase db, String phoneNumber) {
+        Cursor cursor = db.query(TABLE_NAME, null, COL2 + " = " + phoneNumber, null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean removeRecord(String number) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, COL2 + " = " + number, null);
+        return true;
     }
 
     public String getSingleUserInfo(String phoneNumber) {
