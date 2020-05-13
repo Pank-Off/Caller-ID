@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +16,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
-import com.example.Caller_ID.ui.callLog.Details;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class SpamProtectionFragment extends Fragment {
     private FloatingActionButton floatingButton;
     private RecyclerView spamList;
     private ArrayList<String> spamer;
-    DatabaseHelper mDatabaseHelper;
+    private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +54,6 @@ public class SpamProtectionFragment extends Fragment {
         });
         context = getContext();
         spamer = new ArrayList<>();
-        mDatabaseHelper = new DatabaseHelper(context);
 
         spamer = mDatabaseHelper.getDataFromDB();
 
@@ -74,11 +72,9 @@ public class SpamProtectionFragment extends Fragment {
         SpamAdapter adapter = new SpamAdapter(spamer, positions -> {
             // получаем выбранный пункт
             String selectedSpamer = spamer.get(positions);
-            Toast.makeText(getContext(), "Был выбран пункт " + selectedSpamer,
-                    Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(getActivity(), AddNumberActivity.class);
-//            intent.putExtra(EXTRA, selectedSpamer);
-//            startActivity(intent);
+            Intent intent = new Intent(getActivity(), AddNumberActivity.class);
+            intent.putExtra(EXTRA, selectedSpamer);
+            startActivity(intent);
         });
         spamList.setAdapter(adapter);
     }

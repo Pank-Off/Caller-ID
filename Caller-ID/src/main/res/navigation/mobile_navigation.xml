@@ -15,7 +15,7 @@
         android:id="@+id/navigation_check_number"
         android:name="com.example.Caller_ID.ui.checkNumber.CheckNumberFragment"
         android:label="@string/title_check_number"
-        tools:layout="@layout/fragment_check_and_newspamer" />
+        tools:layout="@layout/fragment_check" />
 
 
     <fragment

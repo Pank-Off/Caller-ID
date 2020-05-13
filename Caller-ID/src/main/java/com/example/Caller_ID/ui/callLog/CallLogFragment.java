@@ -23,12 +23,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import me.everything.providers.android.calllog.Call;
 import me.everything.providers.android.calllog.CallsProvider;
@@ -43,7 +43,7 @@ public class CallLogFragment extends Fragment {
     private Button allowBtn;
     private Context context;
     private List<PhoneBook> contacts;
-    private DatabaseHelper mDatabaseHelper;
+    private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
 
     final static String EXTRA_NUMBER = "EXTRA_NUMBER";
     final static String EXTRA_NAME = "EXTRA_NAME";
@@ -167,7 +167,6 @@ public class CallLogFragment extends Fragment {
 
     private int determineType(Call.CallType type, String number) {
 
-        mDatabaseHelper = new DatabaseHelper(context);
         String isSpam = mDatabaseHelper.getSingleUserInfo(number);
         if (isSpam.equals("Is spam")) {
             return R.drawable.bancircle;
