@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
@@ -22,7 +23,7 @@ import java.util.Objects;
 
 public class CheckNumberFragment extends Fragment {
 
-    DatabaseHelper mDatabaseHelper;
+    private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
     private CheckNumberViewModel checkNumberViewModel;
     private MaterialButton addBtn;
     private TextInputEditText numberOfPhoneEditText;
@@ -33,7 +34,7 @@ public class CheckNumberFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_check_and_newspamer, container, false);
+        return inflater.inflate(R.layout.fragment_check, container, false);
     }
 
     @Override
@@ -53,8 +54,7 @@ public class CheckNumberFragment extends Fragment {
 
         addBtn.setText(R.string.title_check_number);
         addBtn.setOnClickListener(v -> {
-            context = getContext();
-            mDatabaseHelper = new DatabaseHelper(context);
+            //Нельзя лезть в базу в UI потоке
             String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(numberOfPhoneEditText.getText()).toString());
             isSpamTextfield.setText(isSpam);
         });

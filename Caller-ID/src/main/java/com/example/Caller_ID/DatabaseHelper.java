@@ -68,6 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean removeRecord(String number) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, COL2 + " = " + number, null);
+        Log.d("delete", COL2 + " = " + number);
         return true;
     }
 

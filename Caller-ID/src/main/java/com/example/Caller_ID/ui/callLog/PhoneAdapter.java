@@ -17,7 +17,6 @@ import java.util.List;
 
 
 public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> {
-
     private List<PhoneBook> contacts;
     private Context context;
     private OnItemClickListener onItemClickListener;

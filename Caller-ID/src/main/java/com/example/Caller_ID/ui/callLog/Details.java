@@ -12,9 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
-import com.example.Caller_ID.ui.spamProtection.AddNumberActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Objects;
@@ -38,7 +38,7 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         context = getApplicationContext();
-        mDatabaseHelper = new DatabaseHelper(context);
+        mDatabaseHelper = App.getInstance().getDataBase();
         initViews();
         setText();
         setOnImageClickListener();
@@ -54,12 +54,15 @@ public class Details extends AppCompatActivity {
 
         thisIsSpamBtn.setOnClickListener(v -> {
             if (thisIsSpamBtn.getText().equals(getResources().getString(R.string.this_is_spam))) {
-                Intent intent = new Intent(this, AddNumberActivity.class);
-                intent.putExtra(EXTRA, numberView.getText());
-                startActivity(intent);
+//                Intent intent = new Intent(this, AddNumberActivity.class);
+//                intent.putExtra(EXTRA, numberView.getText());
+//                startActivity(intent);
+                Toast.makeText(context, "Spamer is added", Toast.LENGTH_LONG).show();
+                mDatabaseHelper.addRecord(numberView.getText().toString(), true);
                 thisIsSpamBtn.setText(R.string.this_is_not_spam);
             } else {
                 Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
+
                 mDatabaseHelper.removeRecord(numberView.getText().toString());
                 thisIsSpamBtn.setText(R.string.this_is_spam);
             }
