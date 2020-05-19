@@ -9,19 +9,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_michaelrocks_libphonenumber_android_8_12_3_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/Details.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddSpamerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddSpamerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_add_number.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_add_number.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/menu/add_spam_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/menu/add_spam_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values-ru/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +36,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_Nexus_API_21" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -38,7 +45,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -64,8 +76,8 @@
   <component name="ProjectId" id="1Ycrt9E2feF5C6wqBvbJS0ngmse" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_XL_API_28" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-18T10:44:55.560Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Galaxy_Nexus_API_21" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-18T17:36:12.763Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -269,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589374523858</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Подкорректировал UI, потестил на разных устройствах, вроде норм.&#10;Реализовал проверку корректности номера">
+      <created>1589813964061</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1589813964061</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,7 +315,8 @@
     <MESSAGE value="SomeChanges" />
     <MESSAGE value="CallLog" />
     <MESSAGE value="SpamDB" />
-    <option name="LAST_COMMIT_MESSAGE" value="SpamDB" />
+    <MESSAGE value="Подкорректировал UI, потестил на разных устройствах, вроде норм.&#10;Реализовал проверку корректности номера" />
+    <option name="LAST_COMMIT_MESSAGE" value="Подкорректировал UI, потестил на разных устройствах, вроде норм.&#10;Реализовал проверку корректности номера" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

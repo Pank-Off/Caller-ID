@@ -21,4 +21,6 @@
     <string name="spamer">Spamer</string>
     <string name="this_is_not_spam">This is not Spam</string>
     <string name="edit">edit</string>
+    <string name="save">save</string>
+
 </resources>

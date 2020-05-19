@@ -2,7 +2,6 @@ package com.example.Caller_ID.ui.spamProtection;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +18,6 @@ import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.R;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 import io.michaelrocks.libphonenumber.android.NumberParseException;
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
@@ -31,11 +29,13 @@ public class AddNumberActivity extends AppCompatActivity {
 
     MenuItem itemAdd;
     MenuItem itemEdit;
+    MenuItem itemSave;
     DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
     AddSpamerFragment addSpamerFragment;
     EditSpamerFragment editSpamerFragment;
     Context context;
     private PhoneNumberUtil util = null;
+    String correctPhone = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class AddNumberActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (getIntent().getExtras().getString(EXTRA).equals("")) {
+        if (Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA).equals("")) {
             addSpamerFragment = new AddSpamerFragment();
             fragmentTransaction.replace(R.id.fragment_container, addSpamerFragment);
         } else {
@@ -56,18 +56,20 @@ public class AddNumberActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.fragment_container, editSpamerFragment);
         }
         fragmentTransaction.commit();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_spam_menu, menu);
+        itemSave = menu.getItem(2);
         itemAdd = menu.getItem(1);
         itemEdit = menu.getItem(0);
         if (getIntent().getExtras().getString(EXTRA).equals("")) {
+            itemSave.setVisible(false);
             itemEdit.setVisible(false);
         } else {
             itemAdd.setVisible(false);
+            itemSave.setVisible(false);
 
         }
         return true;
@@ -79,7 +81,7 @@ public class AddNumberActivity extends AppCompatActivity {
             if (!(Objects.requireNonNull(addSpamerFragment.numberOfPhone.getText())).toString().equals("")) {
                 String number = addSpamerFragment.numberOfPhone.getText().toString();
                 if (checkValidNumber(number)) {
-                    if (!mDatabaseHelper.addRecord(number, true)) {
+                    if (!mDatabaseHelper.addRecord(correctPhone, true, addSpamerFragment.getComment())) {
                         Toast.makeText(context, "Sorry, duplicate", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(context, "Add", Toast.LENGTH_LONG).show();
@@ -101,8 +103,9 @@ public class AddNumberActivity extends AppCompatActivity {
         }
 
         if (R.id.action_edit == item.getItemId()) {
-            itemAdd.setVisible(true);
+            itemSave.setVisible(true);
             itemEdit.setVisible(false);
+
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             addSpamerFragment = new AddSpamerFragment();
             Bundle bundle = new Bundle();
@@ -110,6 +113,28 @@ public class AddNumberActivity extends AppCompatActivity {
             addSpamerFragment.setArguments(bundle);
             fragmentTransaction.replace(R.id.fragment_container, addSpamerFragment);
             fragmentTransaction.commit();
+        }
+        if (R.id.action_save == item.getItemId()) {
+            if (!(Objects.requireNonNull(addSpamerFragment.numberOfPhone.getText())).toString().equals("")) {
+                String number = addSpamerFragment.numberOfPhone.getText().toString();
+                if (checkValidNumber(number)) {
+                    String newComment = addSpamerFragment.getComment();
+                    mDatabaseHelper.replaceRecord(addSpamerFragment.number, correctPhone, newComment);
+                    Toast.makeText(context, "Replace", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Failed to save an entry").
+                        setMessage("Please input number of phone").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -120,11 +145,9 @@ public class AddNumberActivity extends AppCompatActivity {
         }
         try {
             final Phonenumber.PhoneNumber phoneNumber = util.parse(number, "RU");
-            String correctPhone = util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
-            // Toast.makeText(context, correctPhone, Toast.LENGTH_LONG).show();
+            correctPhone = util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
             if (util.isPossibleNumber(phoneNumber)) {
                 hideError(addSpamerFragment.numberOfPhone);
-                Toast.makeText(context, correctPhone + phoneNumber.getCountryCode(), Toast.LENGTH_LONG).show();
                 return true;
             }
         } catch (NumberParseException e) {

@@ -65,9 +65,11 @@ public class EditSpamerFragment extends Fragment {
                 setMessage("Do not consider this number spam?").setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
-                mDatabaseHelper.removeRecord(Objects.requireNonNull(numberOfPhone.getText()).toString());
-                requireActivity().finish();
+                boolean successDeleted = mDatabaseHelper.removeRecord(Objects.requireNonNull(numberOfPhone.getText()).toString());
+                if (successDeleted) {
+                    Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
+                    requireActivity().finish();
+                }
             }
         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override

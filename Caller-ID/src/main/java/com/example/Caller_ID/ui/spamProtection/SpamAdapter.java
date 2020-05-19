@@ -14,17 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Caller_ID.R;
 import com.example.Caller_ID.ui.callLog.OnItemClickListener;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpamAdapter extends RecyclerView.Adapter<SpamAdapter.ViewHolder> {
 
-    private List<String> spamers;
+    private HashMap<String, String> spamerMap;
+    private ArrayList<String> numbers = new ArrayList<>();
+    private ArrayList<String> comments = new ArrayList<>();
     private Context context;
     private OnItemClickListener onItemClickListener;
 
-    SpamAdapter(List<String> spamers, OnItemClickListener onItemClickListener) {
-        this.spamers = spamers;
+    SpamAdapter(HashMap<String, String> spamerMap, OnItemClickListener onItemClickListener) {
+        this.spamerMap = spamerMap;
         this.onItemClickListener = onItemClickListener;
+        for (Map.Entry<String, String> entry : spamerMap.entrySet()) {
+            numbers.add(entry.getKey());
+            comments.add(entry.getValue());
+        }
     }
 
     @NonNull
@@ -38,15 +46,14 @@ public class SpamAdapter extends RecyclerView.Adapter<SpamAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SpamAdapter.ViewHolder holder, int position) {
         holder.flagView.setImageResource(R.drawable.bancircle);
-
-        holder.nameView.setText(R.string.spamer);
-        holder.numberView.setText(spamers.get(position));
+        holder.nameView.setText(comments.get(position));
+        holder.numberView.setText(numbers.get(position));
         holder.oneItemView.setOnClickListener(v -> holder.listener.onClick(position));
     }
 
     @Override
     public int getItemCount() {
-        return spamers == null ? 0 : spamers.size();
+        return numbers == null ? 0 : numbers.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -62,7 +69,6 @@ public class SpamAdapter extends RecyclerView.Adapter<SpamAdapter.ViewHolder> {
             nameView = itemView.findViewById(R.id.name);
             numberView = itemView.findViewById(R.id.number);
             oneItemView = itemView.findViewById(R.id.item);
-
             this.listener = listener;
         }
     }

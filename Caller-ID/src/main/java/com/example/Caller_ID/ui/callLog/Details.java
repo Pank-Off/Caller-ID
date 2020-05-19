@@ -54,15 +54,11 @@ public class Details extends AppCompatActivity {
 
         thisIsSpamBtn.setOnClickListener(v -> {
             if (thisIsSpamBtn.getText().equals(getResources().getString(R.string.this_is_spam))) {
-//                Intent intent = new Intent(this, AddNumberActivity.class);
-//                intent.putExtra(EXTRA, numberView.getText());
-//                startActivity(intent);
                 Toast.makeText(context, "Spamer is added", Toast.LENGTH_LONG).show();
-                mDatabaseHelper.addRecord(numberView.getText().toString(), true);
+                mDatabaseHelper.addRecord(numberView.getText().toString(), true, "From CallLog");
                 thisIsSpamBtn.setText(R.string.this_is_not_spam);
             } else {
                 Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
-
                 mDatabaseHelper.removeRecord(numberView.getText().toString());
                 thisIsSpamBtn.setText(R.string.this_is_spam);
             }

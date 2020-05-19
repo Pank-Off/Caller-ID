@@ -25,6 +25,25 @@
             android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/commentLay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:hint="@string/comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/numberOfPhoneLay">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:textSize="25sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addCategoryBtn"
         android:layout_width="wrap_content"
@@ -34,7 +53,7 @@
         android:layout_marginTop="44dp"
         android:text="@string/add_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfPhoneLay" />
+        app:layout_constraintTop_toBottomOf="@+id/commentLay" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
