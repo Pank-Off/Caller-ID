@@ -1,5 +1,6 @@
 package com.example.Caller_ID.ui.checkNumber;
 
+import android.app.Application;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -8,10 +9,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.Caller_ID.DatabaseHelper;
+import com.example.Caller_ID.MainActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
+
+import io.michaelrocks.libphonenumber.android.NumberParseException;
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
+import io.michaelrocks.libphonenumber.android.Phonenumber;
 
 public class CheckNumberViewModel extends ViewModel {
 
@@ -40,6 +46,7 @@ public class CheckNumberViewModel extends ViewModel {
         //String isSpam = mDatabaseHelper.getSingleUserInfo(numberOfPhoneValue);
         //
     }
+
 
     // Показать ошибку
     private void showError(TextView view) {
