@@ -22,6 +22,8 @@ import com.example.Caller_ID.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.example.Caller_ID.ui.callLog.Details.EXTRA;
 
@@ -33,7 +35,7 @@ public class SpamProtectionFragment extends Fragment {
 
     private FloatingActionButton floatingButton;
     private RecyclerView spamList;
-    private ArrayList<String> spamer;
+    private HashMap<String, String> spamerMap;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,25 +55,26 @@ public class SpamProtectionFragment extends Fragment {
             }
         });
         context = getContext();
-        spamer = new ArrayList<>();
-
-        spamer = mDatabaseHelper.getDataFromDB();
-
+        spamerMap = new HashMap<>();
         setOnFloatingBtnClick();
         showSpam();
 
     }
 
     private void showSpam() {
+        spamerMap = mDatabaseHelper.getDataFromDB();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         spamList.setLayoutManager(linearLayoutManager);
         mDividerItemDecoration = new DividerItemDecoration(spamList.getContext(),
                 DividerItemDecoration.VERTICAL);
         spamList.addItemDecoration(mDividerItemDecoration);
-
-        SpamAdapter adapter = new SpamAdapter(spamer, positions -> {
+        ArrayList<String> numbers = new ArrayList<>();
+        for (Map.Entry<String, String> entry : spamerMap.entrySet()) {
+            numbers.add(entry.getKey());
+        }
+        SpamAdapter adapter = new SpamAdapter(spamerMap, positions -> {
             // получаем выбранный пункт
-            String selectedSpamer = spamer.get(positions);
+            String selectedSpamer = numbers.get(positions);
             Intent intent = new Intent(getActivity(), AddNumberActivity.class);
             intent.putExtra(EXTRA, selectedSpamer);
             startActivity(intent);
@@ -90,5 +93,11 @@ public class SpamProtectionFragment extends Fragment {
             intent.putExtra(EXTRA, "");
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showSpam();
     }
 }

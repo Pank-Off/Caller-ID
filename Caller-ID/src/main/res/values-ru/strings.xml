@@ -21,4 +21,6 @@
     <string name="this_is_not_spam">Это не спам</string>
     <string name="add_category">Добавить категорию</string>
     <string name="spamer">Спамер</string>
+    <string name="edit">Редактировать</string>
+    <string name="save">Сохранить</string>
 </resources>

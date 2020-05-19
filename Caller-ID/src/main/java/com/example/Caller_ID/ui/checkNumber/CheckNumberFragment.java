@@ -34,11 +34,10 @@ public class CheckNumberFragment extends Fragment {
     private TextView isSpamTextfield;
     private Context context;
     private PhoneNumberUtil util;
-
+    private String correctPhone = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_check, container, false);
     }
 
@@ -63,7 +62,7 @@ public class CheckNumberFragment extends Fragment {
             //Нельзя лезть в базу в UI потоке
             String number = Objects.requireNonNull(numberOfPhoneEditText.getText()).toString();
             if (checkValidNumber(number)) {
-                String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(number));
+                String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(correctPhone));
                 isSpamTextfield.setText(isSpam);
             }
         });
@@ -75,17 +74,17 @@ public class CheckNumberFragment extends Fragment {
         isSpamTextfield = view.findViewById(R.id.isSpamTextView);
     }
 
-    boolean checkValidNumber(String number) {
+    private boolean checkValidNumber(String number) {
         if (util == null) {
             util = PhoneNumberUtil.createInstance(context);
         }
         try {
             final Phonenumber.PhoneNumber phoneNumber = util.parse(number, "RU");
-            String correctPhone = util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
+            correctPhone = util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
             // Toast.makeText(context, correctPhone, Toast.LENGTH_LONG).show();
             if (util.isPossibleNumber(phoneNumber)) {
                 hideError(numberOfPhoneEditText);
-                Toast.makeText(context, correctPhone + phoneNumber.getCountryCode(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, correctPhone, Toast.LENGTH_LONG).show();
                 return true;
             }
         } catch (NumberParseException e) {

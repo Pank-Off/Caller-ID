@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -17,33 +17,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL1 = "ID";
     private static final String COL2 = "phoneNumber";
     private static final String COL3 = "isSpam";
+    private static final String COL4 = "comment";
 
     public DatabaseHelper(Context context) {
-        super(context, TABLE_NAME, null, 1);
+        super(context, TABLE_NAME, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL2 + " TEXT," +
-                COL3 + " NUMERIC)";
+                COL3 + " NUMERIC," +
+                COL4 + " TEXT)";
         db.execSQL(createTable);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(TABLE_NAME);
         onCreate(db);
     }
 
-    public boolean addRecord(String phoneNumber, Boolean isSpam) {
+    public boolean addRecord(String phoneNumber, Boolean isSpam, String comment) {
         SQLiteDatabase db = this.getWritableDatabase();
-        if (checkDuplicate(db, phoneNumber)) {
+        boolean duplicateIsFound = checkDuplicate(db, phoneNumber);
+        if (duplicateIsFound) {
             return false;
         }
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, phoneNumber);
-
+        contentValues.put(COL4, comment);
         if (isSpam) {
             contentValues.put(COL3, 1);
         } else {
@@ -56,20 +59,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private boolean checkDuplicate(SQLiteDatabase db, String phoneNumber) {
-        Cursor cursor = db.query(TABLE_NAME, null, COL2 + " = " + phoneNumber, null, null, null, null);
-        if (cursor != null && cursor.getCount() > 0) {
+        Cursor cursor = db.query(TABLE_NAME, null, COL2 + "=?", new String[]{phoneNumber}, null, null, null);
+        if (cursor.getCount() > 0) {
             cursor.close();
             return true;
         }
         return false;
     }
 
-
-    public boolean removeRecord(String number) {
+    public void replaceRecord(String oldNumber, String newNumber, String newComment) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, COL2 + " = " + number, null);
-        Log.d("delete", COL2 + " = " + number);
-        return true;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = ? ", new String[]{oldNumber});
+        String oldComment = "";
+        if (cursor != null && cursor.moveToFirst()) {
+            oldComment = cursor.getString(cursor.getColumnIndex(COL4));
+            cursor.close();
+        }
+        String updateNumber = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = replace(" + COL2 + ", '" + oldNumber + "', '" + newNumber + "') WHERE " + COL2 + " LIKE '%" + oldNumber + "%'";
+        db.execSQL(updateNumber);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL4, newComment);
+        int result = db.update(TABLE_NAME, contentValues, COL4 + " = ? ", new String[]{oldComment});
+        Log.d("result", result + "");
+        db.close();
+    }
+
+    public boolean removeRecord(String phoneNumber) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int success = db.delete(TABLE_NAME, COL2 + "=?", new String[]{phoneNumber});
+        return success == 1;
     }
 
     public String getSingleUserInfo(String phoneNumber) {
@@ -97,8 +115,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<String> getDataFromDB() {
-        ArrayList<String> data = new ArrayList<>();
+    public HashMap<String, String> getDataFromDB() {
+        HashMap<String, String> data = new HashMap<>();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
         SQLiteDatabase db = getWritableDatabase();
         Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
@@ -111,11 +129,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int idColIndex = c.getColumnIndex(COL1);
             int numberColIndex = c.getColumnIndex(COL2);
             int spamColIndex = c.getColumnIndex(COL3);
+            int commentColIndex = c.getColumnIndex(COL4);
 
             do {
                 // получаем значения по номерам столбцов и пишем все в лог
-                if (!data.contains(c.getString(numberColIndex))) {
-                    data.add(c.getString(numberColIndex));
+
+                if (!data.containsKey(c.getString(numberColIndex))) {
+                    data.put(c.getString(numberColIndex), c.getString(commentColIndex));
                 }
                 // переход на следующую строку
                 // а если следующей нет (текущая - последняя), то false - выходим из цикла

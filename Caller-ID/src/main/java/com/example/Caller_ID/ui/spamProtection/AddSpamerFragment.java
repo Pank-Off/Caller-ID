@@ -12,11 +12,15 @@ import androidx.fragment.app.Fragment;
 import com.example.Caller_ID.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 import static com.example.Caller_ID.ui.callLog.Details.EXTRA;
 
 public class AddSpamerFragment extends Fragment {
 
     TextInputEditText numberOfPhone;
+    private TextInputEditText comment;
+    String number;
 
     @Nullable
     @Override
@@ -33,15 +37,23 @@ public class AddSpamerFragment extends Fragment {
 
     private void initViews(View view) {
         numberOfPhone = view.findViewById(R.id.numberOfPhone);
+        comment = view.findViewById(R.id.comment);
+    }
+
+    String getComment() {
+        if (comment != null) {
+            return Objects.requireNonNull(comment.getText()).toString();
+        } else {
+            return "";
+        }
     }
 
     private void setTextOnEditText() {
         try {
-            String number = requireArguments().getString(EXTRA);
+            number = requireArguments().getString(EXTRA);
             numberOfPhone.setText(number);
         } catch (IllegalStateException e) {
             numberOfPhone.setText("");
         }
     }
-
 }

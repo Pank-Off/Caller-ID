@@ -13,5 +13,11 @@
         android:orderInCategory="10"
         android:title="@string/add"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="10"
+        android:title="@string/save"
+        app:showAsAction="ifRoom"/>
 
 </menu>
