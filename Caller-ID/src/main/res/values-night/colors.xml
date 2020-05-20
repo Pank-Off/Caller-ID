@@ -6,6 +6,6 @@
     <color name="white">#ffffff</color>
     <color name="notActive">#8492A6</color>
     <color name="active">#0A6243</color>
-    <color name="textFieldColor">#ffffff</color>
-    <color name="textColor">#000000</color>
+    <color name="textFieldColor">#575353</color>
+    <color name="textColor">#ffffff</color>
 </resources>

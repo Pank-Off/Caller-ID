@@ -17,12 +17,12 @@
         android:label="@string/title_check_number"
         tools:layout="@layout/fragment_check" />
 
-
     <fragment
         android:id="@+id/navigation_spam_protection"
         android:name="com.example.Caller_ID.ui.spamProtection.SpamProtectionFragment"
         android:label="@string/title_spam_protection"
         tools:layout="@layout/fragment_spam_protection" />
+
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.Caller_ID.ui.settings.SettingsFragment"
