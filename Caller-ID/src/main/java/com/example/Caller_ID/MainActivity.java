@@ -3,6 +3,7 @@ package com.example.Caller_ID;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -11,8 +12,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-    DatabaseHelper mDatabaseHelper;
 
     FireBaseWorker fireBaseWorker;
 
@@ -30,5 +29,7 @@ public class MainActivity extends AppCompatActivity {
         fireBaseWorker = new FireBaseWorker(getApplicationContext());
 
         fireBaseWorker.download();
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 }
