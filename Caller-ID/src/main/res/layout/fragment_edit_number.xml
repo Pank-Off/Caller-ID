@@ -22,7 +22,7 @@
             android:id="@+id/numberOfPhone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
+            android:background="@color/textFieldColor"
             android:enabled="false"
             android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -37,6 +37,7 @@
         android:layout_marginTop="44dp"
 
         android:text="@string/this_is_not_spam"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfPhoneLay" />
 
