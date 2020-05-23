@@ -3,6 +3,8 @@ package com.example.Caller_ID;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -27,12 +29,15 @@ class FireBaseWorker {
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
+
+                    Log.d("Path", uri.toString());
+                Environment.getExternalStorageState();
                 String url = uri.toString();
                 downloadFiles(context,
-                        "phoneTable",
+                        "cloudPhoneTable",
                         "",
-//                        "/data/data/com.example.myapplication/databases/",  // Здесь студия предлагает другой вариант
-                        context.getFilesDir().getPath(),
+                        "data/data/com.example.myapplication/databases",
+                       // context.getFilesDir().getPath(),
                         url);
             }
         }).addOnFailureListener(new OnFailureListener() {

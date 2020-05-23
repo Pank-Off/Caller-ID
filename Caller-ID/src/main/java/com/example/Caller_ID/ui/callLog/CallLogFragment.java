@@ -179,4 +179,10 @@ public class CallLogFragment extends Fragment {
         return R.drawable.missing;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        showContacts();
+    }
+
 }

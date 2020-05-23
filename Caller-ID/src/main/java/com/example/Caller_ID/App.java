@@ -5,6 +5,7 @@ import android.app.Application;
 public class App extends Application {
 
     private static App instance;
+    FireBaseWorker fireBaseWorker;
 
     // база данных
     private DatabaseHelper db;
@@ -21,6 +22,9 @@ public class App extends Application {
         // Это для синглтона, сохраняем объект приложения
         instance = this;
         db = new DatabaseHelper(this);
+
+        fireBaseWorker = new FireBaseWorker(getApplicationContext());
+        fireBaseWorker.download();
     }
 
     public DatabaseHelper getDataBase() {
