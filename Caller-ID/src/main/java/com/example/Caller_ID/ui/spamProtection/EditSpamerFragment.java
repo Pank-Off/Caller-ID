@@ -3,6 +3,7 @@ package com.example.Caller_ID.ui.spamProtection;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class EditSpamerFragment extends Fragment {
     private MaterialButton thisIsNotSpamBtn;
     private Context context;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
+    private Handler handler = new Handler();
 
 
     @Nullable
@@ -65,11 +67,16 @@ public class EditSpamerFragment extends Fragment {
                 setMessage("Do not consider this number spam?").setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                boolean successDeleted = mDatabaseHelper.removeRecord(Objects.requireNonNull(numberOfPhone.getText()).toString());
-                if (successDeleted) {
-                    Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
-                    requireActivity().finish();
-                }
+                new Thread(() -> {
+                    boolean successDeleted = mDatabaseHelper.removeRecord(Objects.requireNonNull(numberOfPhone.getText()).toString());
+                    handler.post(() -> {
+                        if (successDeleted) {
+                            Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
+                            requireActivity().finish();
+                        }
+                    });
+                }).start();
+
             }
         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override

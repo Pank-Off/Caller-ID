@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class Details extends AppCompatActivity {
     Context context;
     DatabaseHelper mDatabaseHelper;
     public final static String EXTRA = "EXTRA";
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,12 +57,20 @@ public class Details extends AppCompatActivity {
         thisIsSpamBtn.setOnClickListener(v -> {
             if (thisIsSpamBtn.getText().equals(getResources().getString(R.string.this_is_spam))) {
                 Toast.makeText(context, "Spamer is added", Toast.LENGTH_LONG).show();
-                mDatabaseHelper.addRecord(numberView.getText().toString(), true, "From CallLog");
-                thisIsSpamBtn.setText(R.string.this_is_not_spam);
+                new Thread(() -> {
+                    mDatabaseHelper.addRecord(numberView.getText().toString(), true, "From CallLog");
+                    handler.post(() -> thisIsSpamBtn.setText(R.string.this_is_not_spam));
+                }
+                ).start();
+
+
             } else {
                 Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
-                mDatabaseHelper.removeRecord(numberView.getText().toString());
-                thisIsSpamBtn.setText(R.string.this_is_spam);
+                new Thread(() -> {
+                    mDatabaseHelper.removeRecord(numberView.getText().toString());
+                    handler.post(() -> thisIsSpamBtn.setText(R.string.this_is_spam));
+                }
+                ).start();
             }
         });
     }

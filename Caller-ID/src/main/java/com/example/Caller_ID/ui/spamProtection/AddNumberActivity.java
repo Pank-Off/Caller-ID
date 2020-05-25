@@ -3,6 +3,7 @@ package com.example.Caller_ID.ui.spamProtection;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class AddNumberActivity extends AppCompatActivity {
     Context context;
     private PhoneNumberUtil util = null;
     String correctPhone = null;
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class AddNumberActivity extends AppCompatActivity {
         itemSave = menu.getItem(2);
         itemAdd = menu.getItem(1);
         itemEdit = menu.getItem(0);
-        if (getIntent().getExtras().getString(EXTRA).equals("")) {
+        if (Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA).equals("")) {
             itemSave.setVisible(false);
             itemEdit.setVisible(false);
         } else {
@@ -81,12 +83,18 @@ public class AddNumberActivity extends AppCompatActivity {
             if (!(Objects.requireNonNull(addSpamerFragment.numberOfPhone.getText())).toString().equals("")) {
                 String number = addSpamerFragment.numberOfPhone.getText().toString();
                 if (checkValidNumber(number)) {
-                    if (!mDatabaseHelper.addRecord(correctPhone, true, addSpamerFragment.getComment())) {
-                        Toast.makeText(context, "Sorry, duplicate", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(context, "Add", Toast.LENGTH_LONG).show();
-                    }
-                    finish();
+                    new Thread(() -> {
+                        boolean successAdd = mDatabaseHelper.addRecord(correctPhone, true, addSpamerFragment.getComment());
+                        handler.post(() -> {
+                            if (!successAdd) {
+                                Toast.makeText(context, "Sorry, duplicate", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, "Add", Toast.LENGTH_LONG).show();
+                            }
+                            finish();
+                        });
+
+                    }).start();
                 }
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -119,9 +127,14 @@ public class AddNumberActivity extends AppCompatActivity {
                 String number = addSpamerFragment.numberOfPhone.getText().toString();
                 if (checkValidNumber(number)) {
                     String newComment = addSpamerFragment.getComment();
-                    mDatabaseHelper.replaceRecord(addSpamerFragment.number, correctPhone, newComment);
-                    Toast.makeText(context, "Replace", Toast.LENGTH_LONG).show();
-                    finish();
+                    new Thread(() -> {
+                        mDatabaseHelper.replaceRecord(addSpamerFragment.number, correctPhone, newComment);
+                        handler.post(() -> {
+                            Toast.makeText(context, "Replace", Toast.LENGTH_LONG).show();
+                            finish();
+                        });
+                    }).start();
+
                 }
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

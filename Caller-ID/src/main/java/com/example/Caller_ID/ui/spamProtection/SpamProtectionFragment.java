@@ -3,6 +3,7 @@ package com.example.Caller_ID.ui.spamProtection;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class SpamProtectionFragment extends Fragment {
     private RecyclerView spamList;
     private HashMap<String, String> spamerMap;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
+    private Handler handler = new Handler();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,24 +64,30 @@ public class SpamProtectionFragment extends Fragment {
     }
 
     private void showSpam() {
-        spamerMap = mDatabaseHelper.getDataFromDB();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        spamList.setLayoutManager(linearLayoutManager);
-        mDividerItemDecoration = new DividerItemDecoration(spamList.getContext(),
-                DividerItemDecoration.VERTICAL);
-        spamList.addItemDecoration(mDividerItemDecoration);
-        ArrayList<String> numbers = new ArrayList<>();
-        for (Map.Entry<String, String> entry : spamerMap.entrySet()) {
-            numbers.add(entry.getKey());
-        }
-        SpamAdapter adapter = new SpamAdapter(spamerMap, positions -> {
-            // получаем выбранный пункт
-            String selectedSpamer = numbers.get(positions);
-            Intent intent = new Intent(getActivity(), AddNumberActivity.class);
-            intent.putExtra(EXTRA, selectedSpamer);
-            startActivity(intent);
-        });
-        spamList.setAdapter(adapter);
+        new Thread(() -> {
+            spamerMap = mDatabaseHelper.getDataFromDB();
+            handler.post(() -> {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                spamList.setLayoutManager(linearLayoutManager);
+                mDividerItemDecoration = new DividerItemDecoration(spamList.getContext(),
+                        DividerItemDecoration.VERTICAL);
+                spamList.addItemDecoration(mDividerItemDecoration);
+                ArrayList<String> numbers = new ArrayList<>();
+                for (Map.Entry<String, String> entry : spamerMap.entrySet()) {
+                    numbers.add(entry.getKey());
+                }
+                SpamAdapter adapter = new SpamAdapter(spamerMap, positions -> {
+                    // получаем выбранный пункт
+                    String selectedSpamer = numbers.get(positions);
+                    Intent intent = new Intent(getActivity(), AddNumberActivity.class);
+                    intent.putExtra(EXTRA, selectedSpamer);
+                    startActivity(intent);
+                });
+                spamList.setAdapter(adapter);
+            });
+        }).start();
+
+
     }
 
     private void initViews(View view) {

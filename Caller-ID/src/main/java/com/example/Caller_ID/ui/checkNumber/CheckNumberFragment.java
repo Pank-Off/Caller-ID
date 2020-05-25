@@ -2,6 +2,7 @@ package com.example.Caller_ID.ui.checkNumber;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class CheckNumberFragment extends Fragment {
     private Context context;
     private PhoneNumberUtil util;
     private String correctPhone = null;
+    private final Handler handler = new Handler();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,11 +61,12 @@ public class CheckNumberFragment extends Fragment {
 
         addBtn.setText(R.string.title_check_number);
         addBtn.setOnClickListener(v -> {
-            //Нельзя лезть в базу в UI потоке
             String number = Objects.requireNonNull(numberOfPhoneEditText.getText()).toString();
             if (checkValidNumber(number)) {
-                String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(correctPhone));
-                isSpamTextfield.setText(isSpam);
+                new Thread(() -> {
+                    String isSpam = mDatabaseHelper.getSingleUserInfo(Objects.requireNonNull(correctPhone));
+                    handler.post(() -> isSpamTextfield.setText(isSpam));
+                }).start();
             }
         });
     }
@@ -81,7 +84,6 @@ public class CheckNumberFragment extends Fragment {
         try {
             final Phonenumber.PhoneNumber phoneNumber = util.parse(number, "RU");
             correctPhone = util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
-            // Toast.makeText(context, correctPhone, Toast.LENGTH_LONG).show();
             if (util.isPossibleNumber(phoneNumber)) {
                 hideError(numberOfPhoneEditText);
                 Toast.makeText(context, correctPhone, Toast.LENGTH_LONG).show();
