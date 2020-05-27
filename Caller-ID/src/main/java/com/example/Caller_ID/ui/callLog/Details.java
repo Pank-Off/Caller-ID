@@ -53,7 +53,6 @@ public class Details extends AppCompatActivity {
         } else {
             thisIsSpamBtn.setText(R.string.this_is_spam);
         }
-
         thisIsSpamBtn.setOnClickListener(v -> {
             if (thisIsSpamBtn.getText().equals(getResources().getString(R.string.this_is_spam))) {
                 Toast.makeText(context, "Spamer is added", Toast.LENGTH_LONG).show();
@@ -62,7 +61,6 @@ public class Details extends AppCompatActivity {
                     handler.post(() -> thisIsSpamBtn.setText(R.string.this_is_not_spam));
                 }
                 ).start();
-
 
             } else {
                 Toast.makeText(context, "Spamer is deleted", Toast.LENGTH_LONG).show();
@@ -97,6 +95,5 @@ public class Details extends AppCompatActivity {
         numberView = findViewById(R.id.number);
         call = findViewById(R.id.call);
         thisIsSpamBtn = findViewById(R.id.thisIsSpamBtn);
-
     }
 }

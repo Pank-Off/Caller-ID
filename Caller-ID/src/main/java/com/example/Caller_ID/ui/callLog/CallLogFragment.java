@@ -45,7 +45,7 @@ public class CallLogFragment extends Fragment {
     private Context context;
     private List<PhoneBook> contacts;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
-
+    final private Handler handler = new Handler();
     final static String EXTRA_NUMBER = "EXTRA_NUMBER";
     final static String EXTRA_NAME = "EXTRA_NAME";
     final static String EXTRA_ICON = "EXTRA_ICON";
@@ -96,33 +96,30 @@ public class CallLogFragment extends Fragment {
         } else {
             // Android version is lesser than 6.0 or the permission is already granted.
 
-            Thread t = new Thread(() -> contacts = getContactNames());
-            t.start();
-            try {
-                t.join();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            new Thread(() -> {
+                contacts = getContactNames();
+                handler.post(() -> {
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                    contactsList.setLayoutManager(linearLayoutManager);
+                    mDividerItemDecoration = new DividerItemDecoration(contactsList.getContext(),
+                            DividerItemDecoration.VERTICAL);
+                    contactsList.addItemDecoration(mDividerItemDecoration);
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-            contactsList.setLayoutManager(linearLayoutManager);
-            mDividerItemDecoration = new DividerItemDecoration(contactsList.getContext(),
-                    DividerItemDecoration.VERTICAL);
-            contactsList.addItemDecoration(mDividerItemDecoration);
+                    PhoneAdapter adapter = new PhoneAdapter(contacts, positions -> {
+                        // получаем выбранный пункт
+                        PhoneBook selectedContact = contacts.get(positions);
+                        Toast.makeText(getContext(), "Был выбран пункт " + selectedContact.getName(),
+                                Toast.LENGTH_SHORT).show();
 
-            PhoneAdapter adapter = new PhoneAdapter(contacts, positions -> {
-                // получаем выбранный пункт
-                PhoneBook selectedContact = contacts.get(positions);
-                Toast.makeText(getContext(), "Был выбран пункт " + selectedContact.getName(),
-                        Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), Details.class);
-                intent.putExtra(EXTRA_NAME, selectedContact.getName());
-                intent.putExtra(EXTRA_NUMBER, selectedContact.getNumber());
-                intent.putExtra(EXTRA_ICON, selectedContact.getIcon());
-                startActivity(intent);
-            });
-            contactsList.setAdapter(adapter);
+                        Intent intent = new Intent(getActivity(), Details.class);
+                        intent.putExtra(EXTRA_NAME, selectedContact.getName());
+                        intent.putExtra(EXTRA_NUMBER, selectedContact.getNumber());
+                        intent.putExtra(EXTRA_ICON, selectedContact.getIcon());
+                        startActivity(intent);
+                    });
+                    contactsList.setAdapter(adapter);
+                });
+            }).start();
         }
     }
 
@@ -167,7 +164,6 @@ public class CallLogFragment extends Fragment {
     }
 
     private int determineType(Call.CallType type, String number) {
-
         String isSpam = mDatabaseHelper.getSingleUserInfo(number);
         if (isSpam.equals("Is spam")) {
             return R.drawable.bancircle;
@@ -183,7 +179,8 @@ public class CallLogFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        showContacts();
+        if (!(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context.checkSelfPermission(Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED)) {
+            showContacts();
+        }
     }
-
 }
