@@ -22,6 +22,6 @@
     <string name="this_is_not_spam">This is not Spam</string>
     <string name="edit">edit</string>
     <string name="save">save</string>
-    <string name="searchtitle">searchTitle</string>
+    <string name="searchtitle" translatable="false">searchTitle</string>
 
 </resources>

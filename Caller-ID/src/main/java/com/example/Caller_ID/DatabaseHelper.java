@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -13,7 +14,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "newPhoneTable";
+    // private static final String TABLE_NAME = "newPhoneTable";
+    private static final String TABLE_NAME = "CloudPhoneTable";
     private static final String COL1 = "ID";
     private static final String COL2 = "phoneNumber";
     private static final String COL3 = "isSpam";
@@ -29,7 +31,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL2 + " TEXT, " +
                 COL3 + " NUMERIC, " +
                 COL4 + " TEXT)";
-        db.execSQL(createTable);
+        if (!checkDataBase()) {
+            db.execSQL(createTable);
+        }
+    }
+
+    private boolean checkDataBase() {
+        SQLiteDatabase checkDB = null;
+        try {
+            checkDB = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneTable", null,
+                    SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+        } catch (SQLiteException e) {
+            // database doesn't exist yet.
+        }
+        return checkDB != null;
     }
 
     @Override
@@ -113,6 +129,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // database.close();
 
         return result;
+    }
+
+    String getPath() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        return database.getPath();
     }
 
     public HashMap<String, String> getDataFromDB() {
