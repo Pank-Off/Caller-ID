@@ -41,6 +41,7 @@ public class SettingsFragment extends Fragment {
         });
 
         shareBtn = view.findViewById(R.id.shareButton);
+
         shareBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
@@ -50,6 +51,5 @@ public class SettingsFragment extends Fragment {
             intent.putExtra(Intent.EXTRA_TEXT, shareBody);
             startActivity(Intent.createChooser(intent, "Share using"));
         });
-
     }
 }

@@ -42,12 +42,10 @@ public class EditSpamerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         context = getContext();
         initViews(view);
         setOnClickSpamBtnListener();
         setTextOnEditText();
-
     }
 
     private void setTextOnEditText() {

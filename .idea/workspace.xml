@@ -9,20 +9,32 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Pa" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2bbd964-d047-41d1-9fea-6f2d63ec4037" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_miguelcatalan_materialsearchview_1_4_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/Spamers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/menu/main_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/FireBaseWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/FireBaseWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/CallLogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/Details.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout-v21/fragment_spam_protection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout-v21/fragment_spam_protection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_caller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_caller.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,17 +64,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
-        <option value="Class" />
         <option value="valueResourceFile" />
+        <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="FireBaseWorker" />
+        <entry key="$PROJECT_DIR$" value="RK3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,8 +82,8 @@
   <component name="ProjectId" id="1Ycrt9E2feF5C6wqBvbJS0ngmse" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Galaxy_Nexus_API_21" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-25T15:26:09.108Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="4891aab7" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-27T11:11:04.743Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -85,11 +97,11 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Caller-ID" />
-      <recent name="C:\Users\panko\AndroidStudioProjects\Caller-ID\Caller-ID\src\main\res\drawable-v24" />
-      <recent name="C:\Users\panko\AndroidStudioProjects\Caller-ID\Caller-ID\src\main\res\drawable" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/ui" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="C:\Users\panko\AndroidStudioProjects\MyApplication\app\src\main\res\drawable" />
+      <recent name="C:\Users\panko\AndroidStudioProjects\MyApplication\app\src\main\res\drawable-v24" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.example.Caller_ID.ui.spamProtection" />
@@ -101,11 +113,11 @@
       <recent name="com.example.myapplication.ui.checkNumber" />
       <recent name="com.example.myapplication.ui.settings" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/ui" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Caller-ID" />
+      <recent name="C:\Users\panko\AndroidStudioProjects\Caller-ID\Caller-ID\src\main\res\drawable-v24" />
+      <recent name="C:\Users\panko\AndroidStudioProjects\Caller-ID\Caller-ID\src\main\res\drawable" />
       <recent name="C:\Users\panko\AndroidStudioProjects\MyApplication\app\src\main\res\drawable" />
-      <recent name="C:\Users\panko\AndroidStudioProjects\MyApplication\app\src\main\res\drawable-v24" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -398,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590234593648</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add Thread and Handler">
+      <created>1590420761654</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1590420761654</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,12 +447,27 @@
     <MESSAGE value="Подкорректировал UI, потестил на разных устройствах, вроде норм.&#10;Реализовал проверку корректности номера" />
     <MESSAGE value="FixBug" />
     <MESSAGE value="FirebaseWorker move to AppClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="FirebaseWorker move to AppClass" />
+    <MESSAGE value="Add Thread and Handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Thread and Handler" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamAdapter.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Caller-ID-app">
         <watch expression="requireArguments().getString(EXTRA)" language="JAVA" />
+      </configuration>
+      <configuration name="panko-AndroidStudioProjects-Caller-ID-Caller-ID">
+        <watch expression="fragments.get(0)" />
+        <watch expression="spamFragment.getItemId()" language="JAVA" />
+        <watch expression="spamFragment.getTitle()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

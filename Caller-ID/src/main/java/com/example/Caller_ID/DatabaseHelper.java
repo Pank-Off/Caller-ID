@@ -110,7 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             result = "Not found";
         }
 
-        database.close();
+        // database.close();
 
         return result;
     }

@@ -30,14 +30,14 @@ class FireBaseWorker {
             @Override
             public void onSuccess(Uri uri) {
 
-                    Log.d("Path", uri.toString());
+                Log.d("Path", uri.toString());
                 Environment.getExternalStorageState();
                 String url = uri.toString();
                 downloadFiles(context,
                         "cloudPhoneTable",
                         "",
                         "data/data/com.example.myapplication/databases",
-                       // context.getFilesDir().getPath(),
+                        // context.getFilesDir().getPath(),
                         url);
             }
         }).addOnFailureListener(new OnFailureListener() {

@@ -23,7 +23,6 @@ public class CheckNumberViewModel extends ViewModel {
 
     DatabaseHelper mDatabaseHelper;
     private MutableLiveData<Boolean> mBool;
-    private Pattern correctNumber = Pattern.compile("^[0-9]{1,10}$");
 
     public CheckNumberViewModel() {
         mBool = new MutableLiveData<>();
