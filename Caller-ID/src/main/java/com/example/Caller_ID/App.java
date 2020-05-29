@@ -32,9 +32,6 @@ public class App extends Application {
         instance = this;
         db = new DatabaseHelper(this);
 
-        fireBaseWorker = new FireBaseWorker(getApplicationContext());
-        fireBaseWorker.download();
-
         DateFormat df = new SimpleDateFormat("dd/MM/yy");
         String currentDate = df.format(new Date());
         String dateTimeKey = "lastUpdateDate";
