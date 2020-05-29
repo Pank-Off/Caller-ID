@@ -2,7 +2,6 @@ package com.example.Caller_ID;
 
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,8 +14,6 @@ public class App extends Application {
 
     // база данных
     private DatabaseHelper db;
-
-    SharedPreferences sPref;
 
     // Так получаем объект приложения
     public static App getInstance() {
@@ -39,7 +36,7 @@ public class App extends Application {
         SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, 0);
 
         if (sharedPreferences.getBoolean("firstRun", true)) {
-            sharedPreferences.edit().putBoolean("firstRun", false).commit();
+            sharedPreferences.edit().putBoolean("firstRun", false);
             fireBaseWorker = new FireBaseWorker(getApplicationContext());
             fireBaseWorker.download();
 
@@ -48,9 +45,7 @@ public class App extends Application {
         }
         else {
             String lastUpdateDate = sharedPreferences.getString(dateTimeKey, currentDate);
-            Date lastDate;
             try {
-                lastDate = df.parse(lastUpdateDate);
                 if (!currentDate.equals(lastUpdateDate)) {
                     fireBaseWorker = new FireBaseWorker(getApplicationContext());
                     fireBaseWorker.download();
