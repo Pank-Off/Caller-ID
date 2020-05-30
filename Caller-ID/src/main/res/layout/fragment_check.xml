@@ -43,12 +43,21 @@
         android:id="@+id/isSpamTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:background="@color/textFieldColor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfPhoneLay"
         tools:text="TextView" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/update_database_from_cloud"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
