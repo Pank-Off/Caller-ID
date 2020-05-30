@@ -2,10 +2,12 @@ package com.example.Caller_ID;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 public class App extends Application {
 
@@ -19,6 +21,7 @@ public class App extends Application {
     public static App getInstance() {
         return instance;
     }
+
     public static final String APP_PREFERENCES = "callerIDPreferences";
 
     @Override
@@ -29,32 +32,27 @@ public class App extends Application {
         instance = this;
         db = new DatabaseHelper(this);
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.US);
         String currentDate = df.format(new Date());
         String dateTimeKey = "lastUpdateDate";
 
         SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, 0);
 
         if (sharedPreferences.getBoolean("firstRun", true)) {
-            sharedPreferences.edit().putBoolean("firstRun", false);
+            sharedPreferences.edit().putBoolean("firstRun", false).apply();
             fireBaseWorker = new FireBaseWorker(getApplicationContext());
             fireBaseWorker.download();
 
-            sharedPreferences.edit().putString(dateTimeKey, currentDate);
+            sharedPreferences.edit().putString(dateTimeKey, currentDate).apply();
             sharedPreferences.edit().apply();
-        }
-        else {
+        } else {
             String lastUpdateDate = sharedPreferences.getString(dateTimeKey, currentDate);
-            try {
-                if (!currentDate.equals(lastUpdateDate)) {
-                    fireBaseWorker = new FireBaseWorker(getApplicationContext());
-                    fireBaseWorker.download();
+            if (!currentDate.equals(lastUpdateDate)) {
+                fireBaseWorker = new FireBaseWorker(getApplicationContext());
+                fireBaseWorker.download();
 
-                    sharedPreferences.edit().putString(dateTimeKey, currentDate);
-                    sharedPreferences.edit().apply();
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
+                sharedPreferences.edit().putString(dateTimeKey, currentDate).apply();
+                sharedPreferences.edit().apply();
             }
         }
     }

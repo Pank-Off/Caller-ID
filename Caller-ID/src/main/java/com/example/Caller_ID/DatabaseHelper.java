@@ -3,6 +3,7 @@ package com.example.Caller_ID;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -20,9 +21,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL2 = "phoneNumber";
     private static final String COL3 = "isSpam";
     private static final String COL4 = "comment";
+    private Context context;
+
 
     DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
+        this.context = context;
     }
 
     @Override
@@ -31,17 +35,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL2 + " TEXT, " +
                 COL3 + " NUMERIC, " +
                 COL4 + " TEXT)";
-        if (!checkDataBase()) {
-            db.execSQL(createTable);
-        }
+
+//        try {
+//            SQLiteDatabase checkDB = SQLiteDatabase.openDatabase(/*"/data/data/com.example.myapplication/databases/CloudPhoneDB.db"*/String.valueOf(context.getDatabasePath(TABLE_NAME+".db")), null,
+//                    SQLiteDatabase.OPEN_READONLY);
+//            db = checkDB;
+//            checkDB.close();
+//        } catch (SQLiteException e) {
+        db.execSQL(createTable);
+        //  }
+//        if (!checkDataBase()) {
+//
+//        }
     }
 
     private boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         try {
-            checkDB = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneTable", null,
+            checkDB = SQLiteDatabase.openDatabase(String.valueOf(context.getDatabasePath(TABLE_NAME + ".db")), null,
                     SQLiteDatabase.OPEN_READONLY);
-            checkDB.close();
+            //checkDB.close();
         } catch (SQLiteException e) {
             // database doesn't exist yet.
         }
@@ -55,7 +68,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addRecord(String phoneNumber, Boolean isSpam, String comment) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        //SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneDB.db", null,
+                SQLiteDatabase.OPEN_READWRITE);
         boolean duplicateIsFound = checkDuplicate(db, phoneNumber);
         if (duplicateIsFound) {
             return false;
@@ -84,7 +99,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void replaceRecord(String oldNumber, String newNumber, String newComment) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        //SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneDB.db", null,
+                SQLiteDatabase.OPEN_READWRITE);
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = ? ", new String[]{oldNumber});
         String oldComment = "";
         if (cursor != null && cursor.moveToFirst()) {
@@ -101,13 +118,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean removeRecord(String phoneNumber) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        // SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneDB.db", null,
+                SQLiteDatabase.OPEN_READWRITE);
         int success = db.delete(TABLE_NAME, COL2 + "=?", new String[]{phoneNumber});
         return success == 1;
     }
 
     public String getSingleUserInfo(String phoneNumber) {
-        SQLiteDatabase database = this.getWritableDatabase();
+        //      SQLiteDatabase database = this.getWritableDatabase();
+        SQLiteDatabase database = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneDB.db", null,
+                SQLiteDatabase.OPEN_READONLY);
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = ? ", new String[]{phoneNumber});
         String result = "";
 
@@ -139,7 +160,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public HashMap<String, String> getDataFromDB() {
         HashMap<String, String> data = new HashMap<>();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
-        SQLiteDatabase db = getWritableDatabase();
+        //  SQLiteDatabase db = getWritableDatabase();
+
+        String pth = String.valueOf(context.getDatabasePath(TABLE_NAME + ".db"));
+        SQLiteDatabase db;
+        try {
+            db = SQLiteDatabase.openDatabase("/data/data/com.example.myapplication/databases/CloudPhoneDB.db", null,
+                    SQLiteDatabase.OPEN_READONLY);
+        } catch (SQLiteCantOpenDatabaseException e) {
+            db = getWritableDatabase();
+        }
         Cursor c = db.query(TABLE_NAME, null, null, null, null, null, null);
 
         // ставим позицию курсора на первую строку выборки
