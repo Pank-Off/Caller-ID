@@ -3,6 +3,7 @@ package com.example.Caller_ID.ui.checkNumber;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
+import com.example.Caller_ID.FireBaseWorker;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,6 +39,8 @@ public class CheckNumberFragment extends Fragment {
     private PhoneNumberUtil util;
     private String correctPhone = null;
     private final Handler handler = new Handler();
+    private MaterialButton updateDB;
+    private FireBaseWorker fireBaseWorker;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +64,31 @@ public class CheckNumberFragment extends Fragment {
         });
 
         addBtn.setText(R.string.title_check_number);
+        setOnAddBtnClickListener();
+
+        setOnUpdateDBClickListener();
+    }
+
+    private void setOnUpdateDBClickListener() {
+        updateDB.setOnClickListener(v -> {
+            fireBaseWorker = new FireBaseWorker(context);
+            new Thread(() -> {
+                handler.post(() -> Toast.makeText(context, "DataBase are updating...", Toast.LENGTH_LONG).show());
+                boolean areUpdate = fireBaseWorker.download();
+                handler.post(() -> {
+                    Log.e("areUpdate", areUpdate + "");
+                    if (areUpdate) {
+                        Toast.makeText(context, "DataBase is updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "DataBase is not updated", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }).start();
+
+        });
+    }
+
+    private void setOnAddBtnClickListener() {
         addBtn.setOnClickListener(v -> {
             String number = Objects.requireNonNull(numberOfPhoneEditText.getText()).toString();
             if (checkValidNumber(number)) {
@@ -75,6 +104,7 @@ public class CheckNumberFragment extends Fragment {
         addBtn = view.findViewById(R.id.addBtn);
         numberOfPhoneEditText = view.findViewById(R.id.numberOfPhone);
         isSpamTextfield = view.findViewById(R.id.isSpamTextView);
+        updateDB = view.findViewById(R.id.updateDB);
     }
 
     private boolean checkValidNumber(String number) {

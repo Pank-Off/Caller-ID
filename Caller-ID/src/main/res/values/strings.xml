@@ -23,5 +23,6 @@
     <string name="edit">edit</string>
     <string name="save">save</string>
     <string name="searchtitle" translatable="false">searchTitle</string>
+    <string name="update_database_from_cloud">Update Database from cloud</string>
 
 </resources>

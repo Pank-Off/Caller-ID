@@ -41,6 +41,7 @@ public class SpamProtectionFragment extends Fragment {
     private Context context;
     private SpamAdapter adapter;
     private FloatingActionButton floatingButton;
+
     private RecyclerView spamList;
     private HashMap<String, String> spamerMap;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
@@ -148,6 +149,7 @@ public class SpamProtectionFragment extends Fragment {
     private void initViews(View view) {
         floatingButton = view.findViewById(R.id.floatingBtn);
         spamList = view.findViewById(R.id.spam_list);
+
     }
 
     private void setOnFloatingBtnClick() {
