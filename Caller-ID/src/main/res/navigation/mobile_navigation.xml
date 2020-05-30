@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_call_log">
+    app:startDestination="@+id/navigation_check_number">
 
     <fragment
         android:id="@+id/navigation_call_log"
