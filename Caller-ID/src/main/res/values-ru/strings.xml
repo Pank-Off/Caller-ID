@@ -23,4 +23,8 @@
     <string name="spamer">Спамер</string>
     <string name="edit">Редактировать</string>
     <string name="save">Сохранить</string>
+    <string name="update_database_from_cloud">Обновить базу данных</string>
+    <string name="dark_mode">Темная тема</string>
+    <string name="dark_mode_is_enabled">Темная тема включена</string>
+    <string name="light_mode_is_enabled">Светлая тема включена</string>
 </resources>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -33,7 +34,7 @@ public class CheckNumberFragment extends Fragment {
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
     private CheckNumberViewModel checkNumberViewModel;
     private MaterialButton addBtn;
-    private TextInputEditText numberOfPhoneEditText;
+    private AppCompatEditText numberOfPhoneEditText;
     private TextView isSpamTextfield;
     private Context context;
     private PhoneNumberUtil util;

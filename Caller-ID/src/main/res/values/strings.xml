@@ -24,5 +24,8 @@
     <string name="save">save</string>
     <string name="searchtitle" translatable="false">searchTitle</string>
     <string name="update_database_from_cloud">Update Database from cloud</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="dark_mode_is_enabled">Dark Mode is enabled</string>
+    <string name="light_mode_is_enabled">Light Mode</string>
 
 </resources>
