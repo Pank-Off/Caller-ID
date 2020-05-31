@@ -3,10 +3,9 @@ package com.example.Caller_ID;
 import android.app.Application;
 import android.content.SharedPreferences;
 
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.text.ParseException;
+import java.util.Date;
 import java.util.Locale;
 
 public class App extends Application {

@@ -1,8 +1,6 @@
 package com.example.Caller_ID;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -27,11 +25,9 @@ public class FireBaseWorker {
     }
 
     public boolean download() {
-        // так можно получить путь бд которую создате sqlite в databaseHelper
-        // String PathDB = mDatabaseHelper.getPath();
-        // String Path = PathDB.substring(0,PathDB.length()-14);
-        // String Path = "/data/data/com.example.myapplication/databases";
+
         String Path = context.getDatabasePath(nameDB).getParent();
+        assert Path != null;
         File rootPath = new File(Path);
 
         storageReference = FirebaseStorage.getInstance().getReference().child("phoneTable.db");
@@ -49,7 +45,6 @@ public class FireBaseWorker {
             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                 Log.e("firebase ", ";local tem file created  created " + localFile.toString());
                 result = true;
-                //  updateDb(timestamp,localFile.toString(),position);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -60,5 +55,4 @@ public class FireBaseWorker {
         });
         return result;
     }
-
 }
