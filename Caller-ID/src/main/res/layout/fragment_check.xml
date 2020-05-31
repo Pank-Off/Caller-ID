@@ -7,6 +7,7 @@
     tools:context="com.example.Caller_ID.ui.spamProtection.AddNumberActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/YTextInputLayout"
         android:id="@+id/numberOfPhoneLay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,12 +18,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/numberOfPhone"
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/textFieldColor"
-            android:textSize="25sp" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -43,7 +42,6 @@
         android:id="@+id/isSpamTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/textFieldColor"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/update_database_from_cloud"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addBtn" />
