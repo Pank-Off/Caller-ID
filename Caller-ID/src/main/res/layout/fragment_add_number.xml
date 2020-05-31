@@ -7,6 +7,7 @@
     tools:context="com.example.Caller_ID.ui.spamProtection.AddNumberActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/YTextInputLayout"
         android:id="@+id/numberOfPhoneLay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -22,11 +23,12 @@
             android:id="@+id/numberOfPhone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/textFieldColor"
+            android:textColor="@color/textColor"
             android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/YTextInputLayout"
         android:id="@+id/commentLay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -42,22 +44,9 @@
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColorHint="@color/textColor"
-            android:background="@color/textFieldColor"
+            android:textColor="@color/textColor"
             android:textSize="25sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addCategoryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/add_category"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentLay" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
