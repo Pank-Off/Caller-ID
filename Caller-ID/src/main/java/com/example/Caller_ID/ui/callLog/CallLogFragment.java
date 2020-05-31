@@ -153,7 +153,7 @@ public class CallLogFragment extends Fragment {
         List<PhoneBook> phoneBooks = new ArrayList<>();
         CallsProvider callsProvider = new CallsProvider(context);
         List<Call> number = callsProvider.getCalls().getList();
-        int number_size = number.size();
+        int number_size = 25;
         for (int i = 0; i < number_size; i++) {
             contacts.add(number.get(i).number);
             names.add(number.get(i).name);
