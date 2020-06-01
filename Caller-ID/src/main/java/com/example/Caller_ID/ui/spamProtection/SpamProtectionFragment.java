@@ -96,8 +96,11 @@ public class SpamProtectionFragment extends Fragment {
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     Log.i("onQueryTextCahnge", newText);
-                    adapter.getFilter().filter(newText);
-                    Log.i("ItemCount()", adapter.getItemCount() + "");
+                    Log.d("adapter", adapter + "");
+                    if (adapter != null) {
+                        adapter.getFilter().filter(newText);
+                        Log.i("ItemCount()", adapter.getItemCount() + "");
+                    }
                     return true;
                 }
             };
@@ -147,7 +150,6 @@ public class SpamProtectionFragment extends Fragment {
     private void initViews(View view) {
         floatingButton = view.findViewById(R.id.floatingBtn);
         spamList = view.findViewById(R.id.spam_list);
-
     }
 
     private void setOnFloatingBtnClick() {

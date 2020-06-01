@@ -92,11 +92,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             oldComment = cursor.getString(cursor.getColumnIndex(COL4));
             cursor.close();
         }
-        String updateNumber = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = replace(" + COL2 + ", '" + oldNumber + "', '" + newNumber + "') WHERE " + COL2 + " LIKE '%" + oldNumber + "%'";
-        db.execSQL(updateNumber);
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL4, newComment);
-        int result = db.update(TABLE_NAME, contentValues, COL4 + " = ? ", new String[]{oldComment});
+        contentValues.put(COL2, newNumber);
+        int result = db.update(TABLE_NAME, contentValues, COL4 + " = ? AND " + COL2 + " = ?", new String[]{oldComment, oldNumber});
         Log.d("result", result + "");
         db.close();
     }

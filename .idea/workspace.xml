@@ -9,6 +9,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="adapter" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -17,22 +18,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/PhoneAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/callLog/PhoneAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/checkNumber/CheckNumberFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/settings/SettingsViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/AddNumberActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/EditSpamerFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout-v21/fragment_spam_protection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout-v21/fragment_spam_protection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_caller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_caller.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_spam_protection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/fragment_check.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/item_third_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/layout/item_third_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Caller-ID/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Caller-ID/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +59,12 @@
       </list>
     </option>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\panko\AndroidStudioProjects\CallerID.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -80,8 +76,14 @@
   <component name="ProjectId" id="1Ycrt9E2feF5C6wqBvbJS0ngmse" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="AnalyzeApkAction.lastApkPath" value="$USER_HOME$/Desktop" />
+    <property name="ApkExportedModule" value="panko-AndroidStudioProjects-Caller-ID-Caller-ID~2" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_API_24" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-31T17:00:34.250Z" />
+    <property name="ExportApk.ApkPath" value="C:\Users\panko\AndroidStudioProjects\Caller-ID\Caller-ID" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -538,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590924972380</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="ExamVersion">
+      <created>1591001111944</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591001111944</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -572,15 +581,16 @@
     <MESSAGE value="SearchSpamers in localBD" />
     <MESSAGE value="dfsfdfddf" />
     <MESSAGE value="Working version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working version" />
+    <MESSAGE value="ExamVersion" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExamVersion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Caller-ID/src/main/java/com/example/Caller_ID/ui/spamProtection/SpamProtectionFragment.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="7" />
+          <line>165</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
