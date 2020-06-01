@@ -2,8 +2,10 @@ package com.example.Caller_ID;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
@@ -30,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean(SettingsFragment.KEY, true)){
+        ActionBar actionBar = getSupportActionBar();
+        if (sharedPreferences.getBoolean(SettingsFragment.KEY, false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }else{
+            assert actionBar != null;
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.textFieldColor)));
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }

@@ -85,7 +85,6 @@ public class SpamProtectionFragment extends Fragment {
             searchView.setSearchableInfo(searchManager
                     .getSearchableInfo(requireActivity().getComponentName()));
             queryTextListener = new SearchView.OnQueryTextListener() {
-
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Log.i("onQueryTextSubmit", query);
@@ -104,7 +103,6 @@ public class SpamProtectionFragment extends Fragment {
             };
             searchView.setOnQueryTextListener(queryTextListener);
         }
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -165,6 +163,4 @@ public class SpamProtectionFragment extends Fragment {
         super.onResume();
         showSpam();
     }
-
-
 }

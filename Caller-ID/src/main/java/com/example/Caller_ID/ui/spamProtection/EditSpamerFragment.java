@@ -54,9 +54,7 @@ public class EditSpamerFragment extends Fragment {
     }
 
     private void setOnClickSpamBtnListener() {
-        thisIsNotSpamBtn.setOnClickListener(v -> {
-            callAlertDialog();
-        });
+        thisIsNotSpamBtn.setOnClickListener(v -> callAlertDialog());
     }
 
     private void callAlertDialog() {

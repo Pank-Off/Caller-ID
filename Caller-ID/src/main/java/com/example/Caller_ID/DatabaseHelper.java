@@ -23,7 +23,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL4 = "comment";
     private Context context;
 
-
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         this.context = context;
@@ -37,7 +36,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL4 + " TEXT)";
         db.execSQL(createTable);
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -146,7 +144,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-
     public HashMap<String, String> getDataFromDB() {
         HashMap<String, String> data = new HashMap<>();
         // делаем запрос всех данных из таблицы mytable, получаем Cursor
@@ -164,7 +161,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // ставим позицию курсора на первую строку выборки
         // если в выборке нет строк, вернется false
         if (c.moveToFirst()) {
-
             // определяем номера столбцов по имени в выборке
             int idColIndex = c.getColumnIndex(COL1);
             int numberColIndex = c.getColumnIndex(COL2);

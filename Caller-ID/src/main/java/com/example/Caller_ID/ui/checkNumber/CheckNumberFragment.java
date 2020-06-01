@@ -21,7 +21,6 @@ import com.example.Caller_ID.DatabaseHelper;
 import com.example.Caller_ID.FireBaseWorker;
 import com.example.Caller_ID.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
 
@@ -79,9 +78,9 @@ public class CheckNumberFragment extends Fragment {
                 handler.post(() -> {
                     Log.e("areUpdate", areUpdate + "");
                     if (areUpdate) {
-                        Toast.makeText(context, "DataBase is updated", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(context, "DataBase is updated", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, "DataBase is not updated", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "DataBase is not updated", Toast.LENGTH_SHORT).show();
                     }
                 });
             }).start();
