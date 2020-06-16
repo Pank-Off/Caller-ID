@@ -72,7 +72,6 @@ public class AddNumberActivity extends AppCompatActivity {
         } else {
             itemAdd.setVisible(false);
             itemSave.setVisible(false);
-
         }
         return true;
     }
@@ -93,7 +92,6 @@ public class AddNumberActivity extends AppCompatActivity {
                             }
                             finish();
                         });
-
                     }).start();
                 }
             } else {

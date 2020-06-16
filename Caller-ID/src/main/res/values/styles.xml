@@ -12,6 +12,7 @@
         <item name="boxStrokeColor">@color/textColor</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="android:textColorHint">@color/textColor</item>
+        <item name="android:background">@color/textFieldColor</item>
     </style>
 
 </resources>
