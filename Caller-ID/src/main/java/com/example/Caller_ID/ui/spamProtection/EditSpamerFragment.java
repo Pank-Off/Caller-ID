@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.Caller_ID.App;
 import com.example.Caller_ID.DatabaseHelper;
@@ -31,7 +35,10 @@ public class EditSpamerFragment extends Fragment {
     private Context context;
     private DatabaseHelper mDatabaseHelper = App.getInstance().getDataBase();
     private Handler handler = new Handler();
-
+    private MenuItem itemEdit;
+    private MenuItem itemSave;
+    private MenuItem itemAdd;
+    private AddSpamerFragment addSpamerFragment;
 
     @Nullable
     @Override
@@ -46,6 +53,30 @@ public class EditSpamerFragment extends Fragment {
         initViews(view);
         setOnClickSpamBtnListener();
         setTextOnEditText();
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.add_spam_menu, menu);
+        itemSave = menu.getItem(2);
+        itemAdd = menu.getItem(1);
+        itemEdit = menu.getItem(0);
+        itemSave.setVisible(false);
+        itemAdd.setVisible(false);
+        itemEdit.setVisible(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        addSpamerFragment = new AddSpamerFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(EXTRA, Objects.requireNonNull(requireActivity().getIntent().getExtras()).getString(EXTRA));
+        addSpamerFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_container, addSpamerFragment);
+        fragmentTransaction.commit();
+        return true;
     }
 
     private void setTextOnEditText() {

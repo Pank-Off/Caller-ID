@@ -80,7 +80,6 @@ public class SpamAdapter extends RecyclerView.Adapter<SpamAdapter.ViewHolder> im
                         }
                     }
                     spamersListFiltered = filteredSpamers;
-
                 }
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = spamersListFiltered;

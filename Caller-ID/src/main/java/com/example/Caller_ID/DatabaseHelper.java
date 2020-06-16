@@ -174,7 +174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 // получаем значения по номерам столбцов и пишем все в лог
 
-                if (!data.containsKey(c.getString(numberColIndex))) {
+                if (!data.containsKey(c.getString(numberColIndex)) && c.getInt(spamColIndex)!=0) {
                     data.put(c.getString(numberColIndex), c.getString(commentColIndex));
                 }
                 // переход на следующую строку
