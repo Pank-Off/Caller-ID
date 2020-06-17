@@ -12,7 +12,6 @@ public class App extends Application {
 
     private static App instance;
     FireBaseWorker fireBaseWorker;
-
     // база данных
     private DatabaseHelper db;
 

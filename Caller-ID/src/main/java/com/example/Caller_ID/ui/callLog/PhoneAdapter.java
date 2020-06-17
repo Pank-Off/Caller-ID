@@ -60,7 +60,6 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
             nameView = itemView.findViewById(R.id.name);
             numberView = itemView.findViewById(R.id.number);
             oneItemView = itemView.findViewById(R.id.item);
-
             this.listener = listener;
         }
     }

@@ -14,6 +14,9 @@
             android:id="@+id/phone"
             android:layout_width="70dp"
             android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:contentDescription="@string/icon" />
@@ -27,6 +30,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView

@@ -16,5 +16,4 @@ public class SettingsViewModel extends ViewModel {
     LiveData<String> getText() {
         return mText;
     }
-
 }

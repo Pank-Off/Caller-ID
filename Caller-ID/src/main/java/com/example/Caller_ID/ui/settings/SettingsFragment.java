@@ -31,7 +31,6 @@ public class SettingsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_settings_tab, container, false);
     }
 
@@ -40,7 +39,6 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         settingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
         settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-
             @Override
             public void onChanged(String s) {
 
@@ -52,19 +50,18 @@ public class SettingsFragment extends Fragment {
         setOnSwitchCheckedChangeListener();
 
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(requireActivity().getPackageName(), Context.MODE_PRIVATE);
-        darkMode.setChecked(sharedPreferences.getBoolean(KEY, true));
+        darkMode.setChecked(sharedPreferences.getBoolean(KEY, false));
     }
 
     private void setOnSwitchCheckedChangeListener() {
         darkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked) {
+            if (isChecked) {
                 text.setText(R.string.dark_mode_is_enabled);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 SharedPreferences.Editor editor = requireActivity().getSharedPreferences(requireActivity().getPackageName(), Context.MODE_PRIVATE).edit();
                 editor.putBoolean(KEY, true);
                 editor.apply();
-            }
-            else {
+            } else {
                 text.setText(R.string.light_mode_is_enabled);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 SharedPreferences.Editor editor = requireActivity().getSharedPreferences(requireActivity().getPackageName(), Context.MODE_PRIVATE).edit();

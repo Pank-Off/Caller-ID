@@ -85,7 +85,6 @@ public class SpamProtectionFragment extends Fragment {
             searchView.setSearchableInfo(searchManager
                     .getSearchableInfo(requireActivity().getComponentName()));
             queryTextListener = new SearchView.OnQueryTextListener() {
-
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Log.i("onQueryTextSubmit", query);
@@ -97,14 +96,16 @@ public class SpamProtectionFragment extends Fragment {
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     Log.i("onQueryTextCahnge", newText);
-                    adapter.getFilter().filter(newText);
-                    Log.i("ItemCount()", adapter.getItemCount() + "");
+                    Log.d("adapter", adapter + "");
+                    if (adapter != null) {
+                        adapter.getFilter().filter(newText);
+                        Log.i("ItemCount()", adapter.getItemCount() + "");
+                    }
                     return true;
                 }
             };
             searchView.setOnQueryTextListener(queryTextListener);
         }
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -149,7 +150,6 @@ public class SpamProtectionFragment extends Fragment {
     private void initViews(View view) {
         floatingButton = view.findViewById(R.id.floatingBtn);
         spamList = view.findViewById(R.id.spam_list);
-
     }
 
     private void setOnFloatingBtnClick() {
@@ -165,6 +165,4 @@ public class SpamProtectionFragment extends Fragment {
         super.onResume();
         showSpam();
     }
-
-
 }

@@ -7,11 +7,11 @@
     tools:context="com.example.Caller_ID.ui.spamProtection.AddNumberActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/YTextInputLayout"
         android:id="@+id/numberOfPhoneLay"
+        style="@style/YTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:hint="@string/number_of_phone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/numberOfPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textColor" />
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
