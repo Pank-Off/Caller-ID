@@ -111,11 +111,8 @@ public class SpamProtectionFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.search:
-                return false;
-            default:
-                break;
+        if (item.getItemId() == R.id.search) {
+            return false;
         }
         searchView.setOnQueryTextListener(queryTextListener);
         return super.onOptionsItemSelected(item);

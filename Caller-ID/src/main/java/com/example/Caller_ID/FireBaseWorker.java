@@ -40,18 +40,12 @@ public class FireBaseWorker {
 
         Log.d("Path", localFile.toString());
 
-        storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Log.e("firebase ", ";local tem file created  created " + localFile.toString());
-                result = true;
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.e("firebase ", ";local tem file not created  created " + exception.toString());
-                result = false;
-            }
+        storageReference.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
+            Log.e("firebase ", ";local tem file created  created " + localFile.toString());
+            result = true;
+        }).addOnFailureListener(exception -> {
+            Log.e("firebase ", ";local tem file not created  created " + exception.toString());
+            result = false;
         });
         return result;
     }
