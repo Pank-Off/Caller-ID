@@ -8,7 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class App extends Application {
+public class
+App extends Application {
 
     private static App instance;
     FireBaseWorker fireBaseWorker;

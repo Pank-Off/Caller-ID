@@ -45,6 +45,7 @@ public class AddSpamerFragment extends Fragment {
     private String correctPhone = null;
     private final Handler handler = new Handler();
     private String oldNumber;
+
     private Context context;
 
     @Nullable
