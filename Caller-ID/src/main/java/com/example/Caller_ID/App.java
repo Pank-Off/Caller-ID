@@ -1,7 +1,12 @@
 package com.example.Caller_ID;
 
 import android.app.Application;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.provider.BlockedNumberContract.BlockedNumbers;
+import android.telecom.TelecomManager;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,6 +34,15 @@ App extends Application {
 
         // Это для синглтона, сохраняем объект приложения
         instance = this;
+
+
+        /*Context c = this;
+        TelecomManager t = (TelecomManager) getSystemService(Context.TELECOM_SERVICE);
+        //c.startActivity(t.createManageBlockedNumbersIntent(), null);
+        ContentValues values = new ContentValues();
+        values.put(BlockedNumbers.COLUMN_ORIGINAL_NUMBER, "+79152274034");
+        Uri uri = getContentResolver().insert(BlockedNumbers.CONTENT_URI, values);*/
+
         db = new DatabaseHelper(this);
 
         DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.US);
